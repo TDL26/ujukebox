@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-ujukebox-20140101174158;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-ujukebox-20140101174158.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Tommy\ De\ Lacey\\Desktop\\ujukebox\\ujukebox\\ujukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="ujukeboxdbEntities-Web.config Connection String" description="ujukeboxdbEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.ujukebox.csdl|res://*/Models.ujukebox.ssdl|res://*/Models.ujukebox.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=wri8lw57cj.database.windows.net;initial catalog=ujukeboxdb;user id=contactmanageradmin;password=Passw0rd;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Tommy\ De\ Lacey\\Desktop\\ujukebox\\ujukebox\\ujukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ujukeboxdbEntities']/@connectionString" />
+  </parameter>
+</parameters>
