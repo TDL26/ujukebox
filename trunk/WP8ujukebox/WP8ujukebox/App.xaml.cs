@@ -11,8 +11,16 @@ using Microsoft.WindowsAzure.MobileServices;
 
 namespace WP8ujukebox
 {
+
+    
     public partial class App : Application
     {
+
+        public static MobileServiceClient MobileService = new MobileServiceClient(
+         "https://ujukebox.azure-mobile.net/",
+         "WzaesYtewHSUagMdcYPiBnPwhCromc10"
+        );
+        
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
