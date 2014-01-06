@@ -27,15 +27,14 @@
             <TextBlock Text="Playlist" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Height="125"/>
             <TextBlock Text="{Binding LineOne}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#FF0AF5F5" FontSize="36"/>
             <TextBlock Text="{Binding LineTwo}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#996FFF59" FontSize="24"/>
-            <TextBlock Text= "{Binding LineThree}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#991332F9" FontSize="22"/>
-            <TextBlock Text= "{Binding LineFour}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#99E2E3EC" FontSize="24"/>
+            <TextBlock Text="{Binding LineThree}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#991332F9" FontSize="22"/>
+            <TextBlock Text="{Binding LineFour}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#99E2E3EC" FontSize="24"/>
 
 
 
         </StackPanel>
 
         <!--ContentPanel contains details text. Place additional content here-->
-        <Button Content="Click to Vote" HorizontalAlignment="Left" Margin="100,362,0,0" Grid.Row="1" VerticalAlignment="Top" Width="257" Click="Button_Click"/>
         <Button Content="Click Here To Vote" HorizontalAlignment="Left" Margin="120,166,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click_1"/>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

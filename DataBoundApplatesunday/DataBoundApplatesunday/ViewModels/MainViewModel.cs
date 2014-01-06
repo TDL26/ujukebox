@@ -129,7 +129,7 @@ namespace DataBoundApplatesunday.ViewModels
 
                 
 
-                this.Items.Add(new ItemViewModel() { ID = newId.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre });
+                this.Items.Add(new ItemViewModel() { ID = newId.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Votes });
                 
                 newId++;
             }
