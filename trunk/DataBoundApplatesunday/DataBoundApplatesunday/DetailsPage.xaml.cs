@@ -44,19 +44,21 @@ namespace DataBoundApplatesunday
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-        //    MobileServiceClient client = new MobileServiceClient("https://ujukebox.azure-mobile.net/",
-        //"WzaesYtewHSUagMdcYPiBnPwhCromc10");
+
+
+            MobileServiceClient client = new MobileServiceClient("https://ujukebox.azure-mobile.net/",
+           "WzaesYtewHSUagMdcYPiBnPwhCromc10");
 
             
 
         //    //ItemViewModel newTrack = new Tracks();
-        //    Tracks tracks = new Tracks();
+            Tracks tracks = new Tracks();
 
         //    //int votes = tracks.Votes;
         //    //votes++;
 
 
-        //        await client.GetTable<Tracks>().UpdateAsync(tracks);       
+                await client.GetTable<Tracks>().UpdateAsync(tracks);       
   
             //await client.GetTable<Tracks>().Where(x => x.Votes == selectedIndex).ToListAsync();
 
