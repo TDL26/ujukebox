@@ -14,7 +14,7 @@ namespace ujukebox.Controllers
 {
     public class ujukeapiController : ApiController
     {
-        private ujukeboxdbEntities db = new ujukeboxdbEntities();
+        private ujukeboxdbEntities1 db = new ujukeboxdbEntities1();
 
         // GET api/ujukeapi
         public IQueryable<Track> GetTracks()
@@ -33,17 +33,49 @@ namespace ujukebox.Controllers
             }
 
             return Ok(track);
+            //var instructor = (from i in _instructors
+            //                  where i.ID == id
+            //                  select i).FirstOrDefault();
+            //return instructor;
         }
+
+        //public void PutUpdateTrack(Track track)                                  // listing will be in request body
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        int index = db.FindIndex(t => t.TickerSymbol.ToUpper() == db.Title.ToUpper());
+        //        if (index == -1)
+        //        {
+        //            throw new HttpResponseException(HttpStatusCode.NotFound);               // 404
+        //        }
+        //        else
+        //        {
+        //            track.RemoveAt(index);
+        //            track.Add(db.Tracks);
+        //            // default is to return 200 OK
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new HttpResponseException(HttpStatusCode.BadRequest);
+        //    }
+        //}
 
         // PUT api/ujukeapi/5
         public IHttpActionResult PutTrack(int id, Track track)
         {
+            //var realinstructor = (from i in _instructors
+            //                  where i.ID == id
+            //                  select i).FirstOrDefault();
+            //realinstructor.Name = instructor.Name;
+            //return realinstructor;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != track.Id)
+            if (id != track.ID)
             {
                 return BadRequest();
             }
@@ -67,12 +99,22 @@ namespace ujukebox.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
+
+                       
         }
 
         // POST api/ujukeapi
         [ResponseType(typeof(Track))]
         public IHttpActionResult PostTrack(Track track)
         {
+
+            //var realinstructor = (from i in _instructors
+            //                  where i.ID == id
+            //                  select i).FirstOrDefault();
+            //_instructors.Remove(realinstructor);
+           
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -81,7 +123,12 @@ namespace ujukebox.Controllers
             db.Tracks.Add(track);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = track.Id }, track);
+            return CreatedAtRoute("DefaultApi", new { id = track.ID }, track);
+
+            //var newId = _instructors.Count + 1;
+            //instructor.ID = newId;
+            //_instructors.Add(instructor);
+            //return instructor;
         }
 
         // DELETE api/ujukeapi/5
@@ -111,7 +158,7 @@ namespace ujukebox.Controllers
 
         private bool TrackExists(int id)
         {
-            return db.Tracks.Count(e => e.Id == id) > 0;
+            return db.Tracks.Count(e => e.ID == id) > 0;
         }
     }
 }

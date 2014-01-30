@@ -29,6 +29,10 @@ namespace DataBoundApplatesunday
 
                 return viewModel;
             }
+            set
+            {
+                viewModel = value;
+            }
         }
 
         /// <summary>

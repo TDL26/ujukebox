@@ -16,6 +16,8 @@ namespace ujukebox.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public System.Data.Entity.DbSet<ujukebox.Models.Track> Tracks { get; set; }
     }
 
     [Table("UserProfile")]

@@ -51,11 +51,9 @@
             <phone:LongListSelector x:Name="MainLongListSelector" Margin="0,0,-12,0" ItemsSource="{Binding Items}" SelectionChanged="MainLongListSelector_SelectionChanged">
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                      <StackPanel Margin="0,0,0,17">
+                        <StackPanel Margin="0,0,0,0">
                             <TextBlock Text="{Binding LineOne}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36"/>
-                          <TextBlock Text="{Binding LineTwo}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#996FFF59" FontSize="24"/>
-                            <TextBlock Text="{Binding LineThree}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#991332F9" FontSize="22"/>
-                            <TextBlock Text="{Binding LineFour}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#9901020C" FontSize="6"/>
+                            <TextBlock Text="{Binding LineTwo}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#996FFF59" FontSize="24"/>
                         </StackPanel>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>

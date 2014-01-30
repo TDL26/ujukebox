@@ -12,6 +12,28 @@ namespace DataBoundApplatesunday.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {
+        private string _real;
+        /// <summary>
+        /// Sample ViewModel property; this property is used to identify the object.
+        /// </summary>
+        /// <returns></returns>
+        public string Real
+        {
+            get
+            {
+                return _real;
+            }
+            set
+            {
+                if (value != _real)
+                {
+                    _real = value;
+                    NotifyPropertyChanged("Real");
+                }
+            }
+        }
+               
+        
         private string _id;
         /// <summary>
         /// Sample ViewModel property; this property is used to identify the object.
@@ -110,6 +132,24 @@ namespace DataBoundApplatesunday.ViewModels
                 {
                     _lineFour = value;
                     NotifyPropertyChanged("LineFour");
+                }
+            }
+        }
+
+        private int _lineFive;
+
+        public int LineFive
+        {
+            get
+            {
+                return _lineFive;
+            }
+            set
+            {
+                if (value != _lineFive)
+                {
+                    _lineFive = value;
+                    NotifyPropertyChanged("LineFive");
                 }
             }
         }

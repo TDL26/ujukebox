@@ -12,7 +12,7 @@ namespace ujukebox.Controllers
 {
     public class ujukeboxController : Controller
     {
-        private ujukeboxdbEntities db = new ujukeboxdbEntities();
+        private ujukeboxdbEntities1 db = new ujukeboxdbEntities1();
 
         // GET: /ujukebox/
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace ujukebox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Title,Artist,Genre")] Track track)
+        public ActionResult Create([Bind(Include="Id,Title,Artist,Genre,Vote")] Track track)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace ujukebox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Title,Artist,Genre")] Track track)
+        public ActionResult Edit([Bind(Include="Id,Title,Artist,Genre,Vote")] Track track)
         {
             if (ModelState.IsValid)
             {

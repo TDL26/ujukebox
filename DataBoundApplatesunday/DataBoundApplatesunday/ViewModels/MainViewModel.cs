@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Linq;
 using DataBoundApplatesunday.Resources;
 using Microsoft.WindowsAzure.MobileServices;
 
 namespace DataBoundApplatesunday.ViewModels
 {
-    public class Tracks
+    public class Track
     {
         //[Required(ErrorMessage = "Sugar level recording must not be Blank")]
         //[Range(1, 40, ErrorMessage = "Sugar level must be between 1 to 40")]
         //as a string the id works for the list
+
+        public string Real { get; set; }
         public string Id { get; set; }
 
         //[JsonProperty(PropertyName = "title")]
@@ -23,17 +28,20 @@ namespace DataBoundApplatesunday.ViewModels
         //[JsonProperty(PropertyName = "genre")]
         public string Genre { get; set; }
 
-        public int Votes { get; set; }
+        public int Vote { get; set; }
 
         //public ICollection<Tracks> tracks { get; set; }
     }
     public class MainViewModel : INotifyPropertyChanged
     {
-       
+       // URI for RESTful service (implemented using Web API)
+        private const String serviceURI = "http://ujukebox.azurewebsites.net/api/ujukeapi";
+
         public MainViewModel()
         {
             this.Items = new ObservableCollection<ItemViewModel>();
             this.Items2 = new ObservableCollection<ItemViewModel>();
+            
         }
 
         /// <summary>
@@ -41,7 +49,6 @@ namespace DataBoundApplatesunday.ViewModels
         /// </summary>
         public ObservableCollection<ItemViewModel> Items { get; private set; }
         public ObservableCollection<ItemViewModel> Items2 { get; private set; }
-       
 
         private string _sampleProperty = "Sample Runtime Property Value";
         /// <summary>
@@ -81,39 +88,33 @@ namespace DataBoundApplatesunday.ViewModels
             private set;
         }
 
+    
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
         public async void LoadData()
         {
-
-            MobileServiceClient client = new MobileServiceClient("https://ujukebox.azure-mobile.net/",
-           "WzaesYtewHSUagMdcYPiBnPwhCromc10");
-
-            //get all the tracks
-
             
-            //List<Tracks> allTracks = await client.GetTable<Tracks>().ToListAsync();
-            List<Tracks> allTracks = await client.GetTable<Tracks>().OrderBy(x => x.Title).ToListAsync();
-            List<Tracks> allTracks2 = await client.GetTable<Tracks>().OrderByDescending(x => x.Votes).ToListAsync();
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://ujukebox.azurewebsites.net/");                             // base URL for API Controller i.e. RESTFul service
 
-            ////get all the tracks which artist is DC Comics
-            //List<Tracks> filteredComics = await client.GetTable<Tracks>().Where(x => x.Genre == "DC Comics").ToListAsync();
+                // add an Accept header for JSON
+                client.DefaultRequestHeaders.
+                    Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            ////get all the tracks ordered by title
-            //List<Tracks> orderedComics = await client.GetTable<Tracks>().OrderBy(x => x.Title).ToListAsync();
-
-            //TracksList.ItemsSource = allTracks;
-
-
-            int newId = 0;
-            foreach (var listing in allTracks)
-            {
+                HttpResponseMessage response = await client.GetAsync("api/ujukeapi");
+                // read result 
+                //String output = "";
                 
-                if (listing.Id == null)
-                {
-                    listing.Id = "Empty";
-                }
+                var lists = await response.Content.ReadAsAsync<IEnumerable<Track>>();
+                IEnumerable<Track> listings = lists.OrderBy(list => list.Title);
+
+                int newid = 0;
+                string getId = "";
+            foreach (var listing in listings)
+            {
+                getId = listing.Id;
+
                 if (listing.Title == null)
                 {
                     listing.Title = "Empty";
@@ -126,60 +127,31 @@ namespace DataBoundApplatesunday.ViewModels
                 {
                     listing.Genre = "Empty";
                 }
-
                 
+                this.Items.Add(new ItemViewModel() { Real = getId, ID = newid.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Vote });
+               
+                newid++;
 
-                this.Items.Add(new ItemViewModel() { ID = newId.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Votes });
-                
-                newId++;
             }
 
-           foreach (var listing in allTracks2)
+            IEnumerable<Track> listings2 = lists.OrderByDescending(list => list.Vote);
+            int position = 1;
+            int newid2 = 0;
+            string getId2 = "";
+            foreach (var listing in listings2)
             {
+                getId2 = listing.Id;
 
-                if (listing.Id == null)
-                {
-                    listing.Id = "Empty";
-                }
-                if (listing.Title == null)
-                {
-                    listing.Title = "Empty";
-                }
-                if (listing.Artist == null)
-                {
-                    listing.Artist = "Empty";
-                }
-                if (listing.Genre == null)
-                {
-                    listing.Genre = "Empty";
-                }
+                this.Items2.Add(new ItemViewModel() { Real = getId2, ID = newid2.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Vote, LineFive = position });
+                position++;
+                newid2++;
+                
 
-
-
-                this.Items2.Add(new ItemViewModel() { ID = newId.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Votes });
-
-                newId++;
             }
-          
+                   
             this.IsDataLoaded = true;
         }
 
-        //private async void RefreshTracks()
-        //{
-
-        //    Tracks = SampleProperty.;
-
-        //    //    //await client.GetTable<Tracks>().InsertAsync(tracks);
-        ////    // This query filters out completed TodoItems. 
-        //    //items = await todoTable
-        //    //   .Where(todoItem => todoItem.Complete == false)
-        //    //   .ToCollectionAsync();
-
-
-        //   // ListItems.ItemsSource = items;
-
-
-        //}
 
         public async void LoadDataVotes()
         {
@@ -188,19 +160,12 @@ namespace DataBoundApplatesunday.ViewModels
            "WzaesYtewHSUagMdcYPiBnPwhCromc10");
 
             //get all the tracks
-            List<Tracks> allTracks = await client.GetTable<Tracks>().OrderBy(x => x.Votes).ToListAsync();
+            List<Track> allTracks = await client.GetTable<Track>().OrderBy(x => x.Vote).ToListAsync();
 
             
             
 
-            ////get all the tracks which artist is DC Comics
-            //List<Tracks> filteredComics = await client.GetTable<Tracks>().Where(x => x.Genre == "DC Comics").ToListAsync();
-
-            ////get all the tracks ordered by title
-            //List<Tracks> orderedComics = await client.GetTable<Tracks>().OrderBy(x => x.Title).ToListAsync();
-
-            //TracksList.ItemsSource = allTracks;
-
+         
 
             int newId = 1;
             foreach (var listing in allTracks)
@@ -222,9 +187,13 @@ namespace DataBoundApplatesunday.ViewModels
                 {
                     listing.Genre = "Empty";
                 }
+                //if (listing.Vote == null)
+                //{
+                //    listing.Vote = 0;
+                //}
                
                 
-                this.Items.Add(new ItemViewModel() { ID = newId.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Votes });
+                //this.Items.Add(new ItemViewModel() { ID = newId.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Votes });
                 
                 newId++;
             }
