@@ -20,6 +20,7 @@ namespace DataBoundApplatesunday
         
 
             // Set the data context of the LongListSelector control to the sample data
+            
             DataContext = App.ViewModel;
 
             // Sample code to localize the ApplicationBar
@@ -29,9 +30,12 @@ namespace DataBoundApplatesunday
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            //DataContext = null;
+            //App.ViewModel.LoadData();
+
             if (!App.ViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadDataVotes();
+                App.ViewModel.LoadData();
             }
         }
 
@@ -42,9 +46,9 @@ namespace DataBoundApplatesunday
             if (MainLongListSelector.SelectedItem == null)
                 return;
 
-            // Navigate to the new page
-           // NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID, UriKind.Relative));
-
+             //Navigate to the new page
+            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&shouldDownload=true" , UriKind.Relative));
+            
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
         }

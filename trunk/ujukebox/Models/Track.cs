@@ -14,9 +14,10 @@ namespace ujukebox.Models
     
     public partial class Track
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Title { get; set; }
         public string Artist { get; set; }
         public string Genre { get; set; }
+        public Nullable<int> Vote { get; set; }
     }
 }
