@@ -17,7 +17,7 @@ namespace ujukebox
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            RouteTable.Routes.MapHttpRoute("ujukeapiRoute", "{controller}/{id}", new { id = RouteParameter.Optional });
+            //RouteTable.Routes.MapHttpRoute("ujukeapiRoute", "{controller}/{id}", new { id = RouteParameter.Optional });
             GlobalConfiguration.Configure(WebApiConfig.Register);
            // WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
