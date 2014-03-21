@@ -7,9 +7,9 @@ using WP8ujukeboxClient.ViewModels;
 
 namespace WP8ujukeboxClient
 {
-    public partial class ChartsPage : PhoneApplicationPage
+    public partial class StartPage : PhoneApplicationPage
     {
-        public ChartsPage()
+        public StartPage()
         {
             InitializeComponent();
 

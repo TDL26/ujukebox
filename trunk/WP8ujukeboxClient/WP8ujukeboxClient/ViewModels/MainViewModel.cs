@@ -18,6 +18,7 @@ namespace WP8ujukeboxClient.ViewModels
         {
             this.Items = new ObservableCollection<ItemViewModel>();
             this.Items2 = new ObservableCollection<ItemViewModel>();
+            this.Items3 = new ObservableCollection<ItemViewModel>();
             
         }
 
@@ -26,6 +27,7 @@ namespace WP8ujukeboxClient.ViewModels
         /// </summary>
         public ObservableCollection<ItemViewModel> Items { get; private set; }
         public ObservableCollection<ItemViewModel> Items2 { get; private set; }
+        public ObservableCollection<ItemViewModel> Items3 { get; private set; }
 
         private string _sampleProperty = "Sample Runtime Property Value";
         /// <summary>
@@ -119,6 +121,24 @@ namespace WP8ujukeboxClient.ViewModels
                 position++;
                 newid2++;
             }
+
+            //to set a model sorted by vote
+            IEnumerable<Track> listings3 = lists.OrderByDescending(list => list.Vote);
+
+            //set chart position to start at 1
+            //int position = 1;
+            //int newid2 = 0;
+            //string getId2 = "";
+
+            foreach (var listing in listings3)
+            {
+                getId2 = listing.ID;
+
+                this.Items3.Add(new ItemViewModel() { RealID = getId2, ID = newid2.ToString(), LineOne = listing.Title, LineTwo = listing.Artist, LineThree = listing.Genre, LineFour = listing.Vote, LineFive = position.ToString() });
+                position++;
+                newid2++;
+            }
+                   
                    
             this.IsDataLoaded = true;
         }

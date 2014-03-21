@@ -46,7 +46,7 @@ namespace ujukebox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,Title,Artist,Genre,Vote")] Track track)
+        public ActionResult Create([Bind(Include="ID,Title,Artist,Genre,Vote,Club92,Coppers")] Track track)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace ujukebox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,Title,Artist,Genre,Vote")] Track track)
+        public ActionResult Edit([Bind(Include = "ID,Title,Artist,Genre,Vote,Club92,Coppers")] Track track)
         {
             if (ModelState.IsValid)
             {

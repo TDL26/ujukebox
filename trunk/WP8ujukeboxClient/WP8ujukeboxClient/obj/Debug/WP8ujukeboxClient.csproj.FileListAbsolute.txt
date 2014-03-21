@@ -62,3 +62,4 @@ D:\Google Drive\_GoogleCode\ujukebox\WP8ujukeboxClient\WP8ujukeboxClient\obj\Deb
 D:\Google Drive\_GoogleCode\ujukebox\WP8ujukeboxClient\WP8ujukeboxClient\obj\Debug\WP8ujukeboxClient.dll
 D:\Google Drive\_GoogleCode\ujukebox\WP8ujukeboxClient\WP8ujukeboxClient\obj\Debug\WP8ujukeboxClient.pdb
 D:\Google Drive\_GoogleCode\ujukebox\WP8ujukeboxClient\WP8ujukeboxClient\obj\Debug\XapCacheFile.xml
+D:\Google Drive\_GoogleCode\ujukebox\WP8ujukeboxClient\WP8ujukeboxClient\obj\Debug\VenuePage.g.cs

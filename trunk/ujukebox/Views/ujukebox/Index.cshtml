@@ -23,6 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Vote)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Club92)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coppers)
+        </th>
         <th></th>
     </tr>
 
@@ -39,6 +45,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Vote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Club92)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coppers)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
