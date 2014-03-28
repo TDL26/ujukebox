@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ujukeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArtistName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenreName" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Track">
+          <Key>
+            <PropertyRef Name="TrackID" />
+          </Key>
+          <Property Name="TrackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrackName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Venue">
+          <Key>
+            <PropertyRef Name="VenueID" />
+          </Key>
+          <Property Name="VenueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VenueName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VenueTrack">
+          <Key>
+            <PropertyRef Name="VenueTrackID" />
+          </Key>
+          <Property Name="VoteID" Type="int" Nullable="false" />
+          <Property Name="VenueID" Type="int" Nullable="false" />
+          <Property Name="TrackID" Type="int" Nullable="false" />
+          <Property Name="ArtistID" Type="int" Nullable="false" />
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="VenueTrackID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="VoteID" />
+          </Key>
+          <Property Name="VoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoteNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_VenueTrack_0">
+          <End Role="Venue" Type="Self.Venue" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venue">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_1">
+          <End Role="Track" Type="Self.Track" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Track">
+              <PropertyRef Name="TrackID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="TrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_2">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_3">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_4">
+          <End Role="Vote" Type="Self.Vote" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vote">
+              <PropertyRef Name="VoteID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="VoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ujukeModelStoreContainer">
+          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Track" EntityType="Self.Track" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venue" EntityType="Self.Venue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VenueTrack" EntityType="Self.VenueTrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_VenueTrack_0" Association="Self.FK_VenueTrack_0">
+            <End Role="Venue" EntitySet="Venue" />
+            <End Role="VenueTrack" EntitySet="VenueTrack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_1" Association="Self.FK_VenueTrack_1">
+            <End Role="Track" EntitySet="Track" />
+            <End Role="VenueTrack" EntitySet="VenueTrack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_2" Association="Self.FK_VenueTrack_2">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="VenueTrack" EntitySet="VenueTrack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_3" Association="Self.FK_VenueTrack_3">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="VenueTrack" EntitySet="VenueTrack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_4" Association="Self.FK_VenueTrack_4">
+            <End Role="Vote" EntitySet="Vote" />
+            <End Role="VenueTrack" EntitySet="VenueTrack" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ujukeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArtistName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VenueTracks" Relationship="Self.FK_VenueTrack_2" FromRole="Artist" ToRole="VenueTrack" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenreName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VenueTracks" Relationship="Self.FK_VenueTrack_3" FromRole="Genre" ToRole="VenueTrack" />
+        </EntityType>
+        <EntityType Name="Track">
+          <Key>
+            <PropertyRef Name="TrackID" />
+          </Key>
+          <Property Name="TrackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrackName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VenueTracks" Relationship="Self.FK_VenueTrack_1" FromRole="Track" ToRole="VenueTrack" />
+        </EntityType>
+        <EntityType Name="Venue">
+          <Key>
+            <PropertyRef Name="VenueID" />
+          </Key>
+          <Property Name="VenueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VenueName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VenueTracks" Relationship="Self.FK_VenueTrack_0" FromRole="Venue" ToRole="VenueTrack" />
+        </EntityType>
+        <EntityType Name="VenueTrack">
+          <Key>
+            <PropertyRef Name="VenueTrackID" />
+          </Key>
+          <Property Name="VoteID" Type="Int32" Nullable="false" />
+          <Property Name="VenueID" Type="Int32" Nullable="false" />
+          <Property Name="TrackID" Type="Int32" Nullable="false" />
+          <Property Name="ArtistID" Type="Int32" Nullable="false" />
+          <Property Name="GenreID" Type="Int32" Nullable="false" />
+          <Property Name="VenueTrackID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Artist" Relationship="Self.FK_VenueTrack_2" FromRole="VenueTrack" ToRole="Artist" />
+          <NavigationProperty Name="Genre" Relationship="Self.FK_VenueTrack_3" FromRole="VenueTrack" ToRole="Genre" />
+          <NavigationProperty Name="Track" Relationship="Self.FK_VenueTrack_1" FromRole="VenueTrack" ToRole="Track" />
+          <NavigationProperty Name="Venue" Relationship="Self.FK_VenueTrack_0" FromRole="VenueTrack" ToRole="Venue" />
+          <NavigationProperty Name="Vote" Relationship="Self.FK_VenueTrack_4" FromRole="VenueTrack" ToRole="Vote" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="VoteID" />
+          </Key>
+          <Property Name="VoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoteNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VenueTracks" Relationship="Self.FK_VenueTrack_4" FromRole="Vote" ToRole="VenueTrack" />
+        </EntityType>
+        <Association Name="FK_VenueTrack_2">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_3">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_1">
+          <End Role="Track" Type="Self.Track" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Track">
+              <PropertyRef Name="TrackID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="TrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_0">
+          <End Role="Venue" Type="Self.Venue" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venue">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VenueTrack_4">
+          <End Role="Vote" Type="Self.Vote" Multiplicity="1" />
+          <End Role="VenueTrack" Type="Self.VenueTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vote">
+              <PropertyRef Name="VoteID" />
+            </Principal>
+            <Dependent Role="VenueTrack">
+              <PropertyRef Name="VoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ujukeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artists" EntityType="Self.Artist" />
+          <EntitySet Name="Genres" EntityType="Self.Genre" />
+          <EntitySet Name="Tracks" EntityType="Self.Track" />
+          <EntitySet Name="Venues" EntityType="Self.Venue" />
+          <EntitySet Name="VenueTracks" EntityType="Self.VenueTrack" />
+          <EntitySet Name="Votes" EntityType="Self.Vote" />
+          <AssociationSet Name="FK_VenueTrack_2" Association="Self.FK_VenueTrack_2">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="VenueTrack" EntitySet="VenueTracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_3" Association="Self.FK_VenueTrack_3">
+            <End Role="Genre" EntitySet="Genres" />
+            <End Role="VenueTrack" EntitySet="VenueTracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_1" Association="Self.FK_VenueTrack_1">
+            <End Role="Track" EntitySet="Tracks" />
+            <End Role="VenueTrack" EntitySet="VenueTracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_0" Association="Self.FK_VenueTrack_0">
+            <End Role="Venue" EntitySet="Venues" />
+            <End Role="VenueTrack" EntitySet="VenueTracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VenueTrack_4" Association="Self.FK_VenueTrack_4">
+            <End Role="Vote" EntitySet="Votes" />
+            <End Role="VenueTrack" EntitySet="VenueTracks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ujukeModelStoreContainer" CdmEntityContainer="ujukeEntities">
+          <EntitySetMapping Name="Artists">
+            <EntityTypeMapping TypeName="ujukeModel.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="ujukeModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="GenreName" ColumnName="GenreName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tracks">
+            <EntityTypeMapping TypeName="ujukeModel.Track">
+              <MappingFragment StoreEntitySet="Track">
+                <ScalarProperty Name="TrackID" ColumnName="TrackID" />
+                <ScalarProperty Name="TrackName" ColumnName="TrackName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Venues">
+            <EntityTypeMapping TypeName="ujukeModel.Venue">
+              <MappingFragment StoreEntitySet="Venue">
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="VenueName" ColumnName="VenueName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VenueTracks">
+            <EntityTypeMapping TypeName="ujukeModel.VenueTrack">
+              <MappingFragment StoreEntitySet="VenueTrack">
+                <ScalarProperty Name="VoteID" ColumnName="VoteID" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="TrackID" ColumnName="TrackID" />
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="VenueTrackID" ColumnName="VenueTrackID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Votes">
+            <EntityTypeMapping TypeName="ujukeModel.Vote">
+              <MappingFragment StoreEntitySet="Vote">
+                <ScalarProperty Name="VoteID" ColumnName="VoteID" />
+                <ScalarProperty Name="VoteNumber" ColumnName="VoteNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

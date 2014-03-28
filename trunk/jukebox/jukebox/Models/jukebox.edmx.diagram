@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63053b4bd8a74e2fbc9ed015f67224d3" Name="Diagram1">
+        <EntityTypeShape EntityType="ujukeModel.Artist" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ujukeModel.Genre" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ujukeModel.Track" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ujukeModel.Venue" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ujukeModel.VenueTrack" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ujukeModel.Vote" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="ujukeModel.FK_VenueTrack_2" ManuallyRouted="false" />
+        <AssociationConnector Association="ujukeModel.FK_VenueTrack_3" ManuallyRouted="false" />
+        <AssociationConnector Association="ujukeModel.FK_VenueTrack_1" ManuallyRouted="false" />
+        <AssociationConnector Association="ujukeModel.FK_VenueTrack_0" ManuallyRouted="false" />
+        <AssociationConnector Association="ujukeModel.FK_VenueTrack_4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

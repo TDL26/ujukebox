@@ -1,0 +1,70 @@
+﻿@model jukebox.Models.VenueTrack
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>VenueTrack</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VoteID, "Vote")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VoteID", String.Empty)
+            @Html.ValidationMessageFor(model => model.VoteID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VenueID, "Venue")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VenueID", String.Empty)
+            @Html.ValidationMessageFor(model => model.VenueID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TrackID, "Track")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TrackID", String.Empty)
+            @Html.ValidationMessageFor(model => model.TrackID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArtistID, "Artist")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ArtistID", String.Empty)
+            @Html.ValidationMessageFor(model => model.ArtistID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GenreID, "Genre")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("GenreID", String.Empty)
+            @Html.ValidationMessageFor(model => model.GenreID)
+        </div>
+
+        @Html.HiddenFor(model => model.VenueTrackID)
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
