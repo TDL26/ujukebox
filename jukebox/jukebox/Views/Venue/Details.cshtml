@@ -1,0 +1,22 @@
+﻿@model jukebox.Models.Venue
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Venue</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VenueName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VenueName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.VenueID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
