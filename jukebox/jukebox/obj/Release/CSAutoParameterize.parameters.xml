@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-jukebox-20140314161726;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-jukebox-20140314161726.mdf" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Tommy\ De\ Lacey\\Desktop\\MAR\\jukebox\\jukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="D:\\Google\ Drive\\_GoogleCode\\ujukebox\\jukebox\\jukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
   <parameter name="ujukeEntities-Web.config Connection String" description="ujukeEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.jukebox.csdl|res://*/Models.jukebox.ssdl|res://*/Models.jukebox.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tgdpc2tloj.database.windows.net;initial catalog=ujuke;user id=ujuke;password=Passw0rd;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Tommy\ De\ Lacey\\Desktop\\MAR\\jukebox\\jukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ujukeEntities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="D:\\Google\ Drive\\_GoogleCode\\ujukebox\\jukebox\\jukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ujukeEntities']/@connectionString" />
+  </parameter>
+  <parameter name="ujukeEntities1-Web.config Connection String" description="ujukeEntities1 Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.jukebox.csdl|res://*/Models.jukebox.ssdl|res://*/Models.jukebox.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tgdpc2tloj.database.windows.net;initial catalog=ujuke;user id=ujuke;password=Passw0rd;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Google\ Drive\\_GoogleCode\\ujukebox\\jukebox\\jukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ujukeEntities1']/@connectionString" />
+  </parameter>
+  <parameter name="ujukeEntities2-Web.config Connection String" description="ujukeEntities2 Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.ujuke.csdl|res://*/Models.ujuke.ssdl|res://*/Models.ujuke.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tgdpc2tloj.database.windows.net;initial catalog=ujuke;user id=ujuke;password=Passw0rd;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Google\ Drive\\_GoogleCode\\ujukebox\\jukebox\\jukebox\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ujukeEntities2']/@connectionString" />
   </parameter>
 </parameters>

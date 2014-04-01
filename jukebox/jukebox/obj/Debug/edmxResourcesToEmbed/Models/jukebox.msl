@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ujukeModelStoreContainer" CdmEntityContainer="ujukeEntities">
+  <EntityContainerMapping StorageEntityContainer="ujukeModelStoreContainer" CdmEntityContainer="ujukeEntities1">
     <EntitySetMapping Name="Artists">
       <EntityTypeMapping TypeName="ujukeModel.Artist">
         <MappingFragment StoreEntitySet="Artist">

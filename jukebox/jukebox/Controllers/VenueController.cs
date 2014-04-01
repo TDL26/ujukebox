@@ -11,7 +11,7 @@ namespace jukebox.Controllers
 {
     public class VenueController : Controller
     {
-        private ujukeEntities db = new ujukeEntities();
+        private ujukeEntities2 db = new ujukeEntities2();
 
 
 
