@@ -116,7 +116,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ujukeEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="ujukeEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Artists" EntityType="Self.Artist" />
     <EntitySet Name="Genres" EntityType="Self.Genre" />
     <EntitySet Name="Tracks" EntityType="Self.Track" />

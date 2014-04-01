@@ -23,6 +23,5 @@ namespace jukebox.Models
         public string VenueName { get; set; }
     
         public virtual ICollection<VenueTrack> VenueTracks { get; set; }
-        //public virtual ICollection<Venue> Venues { get; set; }
     }
 }

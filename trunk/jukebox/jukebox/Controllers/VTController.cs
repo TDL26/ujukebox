@@ -11,7 +11,7 @@ namespace jukebox.Controllers
 {
     public class VTController : Controller
     {
-        private ujukeEntities db = new ujukeEntities();
+        private ujukeEntities2 db = new ujukeEntities2();
 
         //
         // GET: /VT/

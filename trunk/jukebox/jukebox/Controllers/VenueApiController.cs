@@ -14,10 +14,10 @@ namespace jukebox.Controllers
 {
     public class VenueApiController : ApiController
     {
-        private ujukeEntities db = new ujukeEntities();
+        private ujukeEntities2 db = new ujukeEntities2();
 
         // GET api/VenueApi
-        public IEnumerable<String> GetVenues()
+        public IQueryable<string> GetVenues()
         {
             return db.Venues.OrderBy(c => c.VenueName).Select(c => c.VenueName);
             

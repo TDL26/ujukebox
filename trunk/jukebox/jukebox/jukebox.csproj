@@ -188,7 +188,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GenreApiController.cs" />
+    <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlaylistApiController.cs" />
     <Compile Include="Controllers\VenueApiController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Controllers\VTController.cs" />
@@ -198,37 +201,38 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Artist.cs">
-      <DependentUpon>jukebox.tt</DependentUpon>
+      <DependentUpon>ujuke.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\avenue.cs" />
     <Compile Include="Models\Genre.cs">
-      <DependentUpon>jukebox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\jukebox.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>jukebox.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\jukebox.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>jukebox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\jukebox.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>jukebox.edmx</DependentUpon>
+      <DependentUpon>ujuke.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Track.cs">
-      <DependentUpon>jukebox.tt</DependentUpon>
+      <DependentUpon>ujuke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ujuke.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ujuke.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ujuke.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ujuke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ujuke.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ujuke.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Venue.cs">
-      <DependentUpon>jukebox.tt</DependentUpon>
+      <DependentUpon>ujuke.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VenueTrack.cs">
-      <DependentUpon>jukebox.tt</DependentUpon>
+      <DependentUpon>ujuke.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vote.cs">
-      <DependentUpon>jukebox.tt</DependentUpon>
+      <DependentUpon>ujuke.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -289,22 +293,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\jukebox.edmx">
+    <EntityDeploy Include="Models\ujuke.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>jukebox.Designer.cs</LastGenOutput>
+      <LastGenOutput>ujuke.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\jukebox.Context.tt">
+    <Content Include="Models\ujuke.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>jukebox.edmx</DependentUpon>
-      <LastGenOutput>jukebox.Context.cs</LastGenOutput>
+      <DependentUpon>ujuke.edmx</DependentUpon>
+      <LastGenOutput>ujuke.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\jukebox.edmx.diagram">
-      <DependentUpon>jukebox.edmx</DependentUpon>
+    <Content Include="Models\ujuke.edmx.diagram">
+      <DependentUpon>ujuke.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\jukebox.tt">
+    <Content Include="Models\ujuke.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>jukebox.edmx</DependentUpon>
-      <LastGenOutput>jukebox.cs</LastGenOutput>
+      <DependentUpon>ujuke.edmx</DependentUpon>
+      <LastGenOutput>ujuke.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\ujuke - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ujuke - Web Deploy.pubxml" />
@@ -375,6 +379,16 @@
     <Content Include="Views\Venue\Create.cshtml" />
     <Content Include="Views\Venue\Edit.cshtml" />
     <Content Include="Views\Venue\Delete.cshtml" />
+    <Content Include="Views\Genre\Index.cshtml" />
+    <Content Include="Views\Genre\Details.cshtml" />
+    <Content Include="Views\Genre\Create.cshtml" />
+    <Content Include="Views\Genre\Edit.cshtml" />
+    <Content Include="Views\Genre\Delete.cshtml" />
+    <Content Include="Views\GenreApi\Index.cshtml" />
+    <Content Include="Views\GenreApi\Details.cshtml" />
+    <Content Include="Views\GenreApi\Create.cshtml" />
+    <Content Include="Views\GenreApi\Edit.cshtml" />
+    <Content Include="Views\GenreApi\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
