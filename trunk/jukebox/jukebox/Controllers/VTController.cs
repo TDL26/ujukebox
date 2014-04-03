@@ -19,7 +19,7 @@ namespace jukebox.Controllers
         public ActionResult Index()
         {
             var venuetracks = db.VenueTracks.Include(v => v.Artist).Include(v => v.Genre).Include(v => v.Track).Include(v => v.Venue).Include(v => v.Vote);
-            return View(venuetracks.ToList());
+            return View(venuetracks.ToList().OrderBy(c => c.Track).Select(c => c.Track));
 
 
             //return db.Times.OrderBy(c => c.TimesAvailable).Select(c => c.TimesAvailable);

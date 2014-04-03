@@ -177,3 +177,15 @@ D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\zh-Hant\System.Spatial.
 D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\obj\Release\jukebox.csprojResolveAssemblyReference.cache
 D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\obj\Release\jukebox.dll
 D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\obj\Release\jukebox.pdb
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\jukebox.dll.config
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.IO.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Net.Http.Extensions.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Net.Http.Primitives.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Runtime.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Threading.Tasks.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.IO.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Net.Http.Extensions.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Net.Http.Primitives.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Runtime.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\bin\System.Threading.Tasks.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox\obj\Release\jukebox.csproj.App.config
