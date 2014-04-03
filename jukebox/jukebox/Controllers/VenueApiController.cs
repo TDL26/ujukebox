@@ -21,7 +21,6 @@ namespace jukebox.Controllers
         {
             return db.Venues.OrderBy(c => c.VenueName).Select(c => c.VenueName);
             
-            //return db.Venues.AsEnumerable();
         }
 
         // GET api/VenueApi/5

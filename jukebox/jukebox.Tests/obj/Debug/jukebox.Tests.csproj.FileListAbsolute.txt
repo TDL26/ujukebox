@@ -170,3 +170,16 @@ D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\zh-Hant\Sys
 D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\obj\Debug\jukebox.Tests.csprojResolveAssemblyReference.cache
 D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\obj\Debug\jukebox.Tests.dll
 D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\obj\Debug\jukebox.Tests.pdb
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.IO.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Net.Http.Extensions.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Net.Http.Primitives.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Runtime.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Threading.Tasks.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\WebGrease.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\Antlr3.Runtime.dll
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.IO.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Net.Http.Extensions.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Net.Http.Primitives.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Runtime.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\bin\Debug\System.Threading.Tasks.xml
+D:\Google Drive\_GoogleCode\ujukebox\jukebox\jukebox.Tests\obj\Debug\jukebox.Tests.csproj.App.config

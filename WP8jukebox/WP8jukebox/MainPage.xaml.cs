@@ -33,7 +33,7 @@ namespace WP8jukebox
 
             if (!App.ViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                App.ViewModel.LoadVenueData();
             }
         }
 

@@ -6,20 +6,25 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using WP8jukebox.Resources;
 using System.Linq;
+using System.Net;
 
 
 namespace WP8jukebox.ViewModels
 {
+
     public class MainViewModel : INotifyPropertyChanged
     {
+
+
         // URI for RESTful service (implemented using Web API)
-        //private const String serviceURI = "http://ujuke.azurewebsites.net/api/venueapi";
+        //private const String serviceURI = "ttp://ujukebox.azurewebsites.net/";
 
         public MainViewModel()
         {
             this.Items = new ObservableCollection<ItemViewModel>();
             this.Items2 = new ObservableCollection<ItemViewModel>();
             this.Items3 = new ObservableCollection<ItemViewModel>();
+            this.Items4 = new ObservableCollection<ItemViewModel>();
         }
 
         /// <summary>
@@ -27,7 +32,8 @@ namespace WP8jukebox.ViewModels
         /// </summary>
         public ObservableCollection<ItemViewModel> Items { get; private set; }   //venue
         public ObservableCollection<ItemViewModel> Items2 { get; private set; } //genre
-        public ObservableCollection<ItemViewModel> Items3 { get; private set; }  //track
+        public ObservableCollection<ItemViewModel> Items3 { get; private set; }  //playlist
+        public ObservableCollection<ItemViewModel> Items4 { get; private set; }  //chart
         
         private string _sampleProperty = "Sample Runtime Property Value";
         /// <summary>
@@ -70,7 +76,7 @@ namespace WP8jukebox.ViewModels
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
-        public async void LoadData()
+        public async void LoadVenueData()
         {
            HttpClient client = new HttpClient();
 
@@ -81,7 +87,7 @@ namespace WP8jukebox.ViewModels
            client.DefaultRequestHeaders.
            Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.GetAsync("api/venueapi");
+           HttpResponseMessage response = await client.GetAsync("api/venueapi");
                 
                 // read result     
                 var lists = await response.Content.ReadAsAsync<IEnumerable<string>>();
@@ -143,10 +149,12 @@ namespace WP8jukebox.ViewModels
                 var ID = newID2;
                 var lineone = listing.ToString();
                 var linetwo = listing.ToString();
+                var linethree = listing.ToString();
+                var linefour = listing.ToString();
 
 
                 //Real to pass the realid 
-                this.Items2.Add(new ItemViewModel() { RealID = getId,  ID = newID2.ToString(), LineOne = lineone, LineTwo = linetwo });
+                this.Items2.Add(new ItemViewModel() { RealID = getId, ID = newID2.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree });
 
                 //newid is used to set ID to 0 - the index of the item in the displayed list
                 newID2++;
@@ -160,16 +168,16 @@ namespace WP8jukebox.ViewModels
             HttpClient client = new HttpClient();
 
             // base URL for API Controller i.e. RESTFul service
-            client.BaseAddress = new Uri("http://ujuke.azurewebsites.net/");
+            client.BaseAddress = new Uri("http://ujukebox.azurewebsites.net/");
 
             // add an Accept header for JSON
             client.DefaultRequestHeaders.
             Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/playlistapi");
+            HttpResponseMessage response = await client.GetAsync("api/ujukeapi/");
 
-            // read result     
-            var lists = await response.Content.ReadAsAsync<IEnumerable<string>>();
+                                   
+            var lists = await response.Content.ReadAsAsync<IEnumerable<Track>>();
 
 
             // IEnumerable<Venue> listings = lists.OrderBy(list => lists.venueName);
@@ -178,23 +186,77 @@ namespace WP8jukebox.ViewModels
             //// to hold real item id from db
             string getId = "";
             int newID = 0;
+            int position = 1;
+
+            foreach (var listing in lists)
+            {
+                //get the original id and save to getid
+                //getId = listing.ID;
+                getId = listing.ID.ToString();
+                var ID = newID;
+                var lineone = listing.Title.ToString();
+                var linetwo = listing.Artist.ToString();
+                var linethree = listing.Genre.ToString();
+                int linefour = listing.Vote;
+               
+                
+               
+
+                //Real to pass the realid 
+                this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString() });
+                position++;
+                //newid is used to set ID to 0 - the index of the item in the displayed list
+                newID++;
+
+            }
+           // LoadGenreData();
+            this.IsDataLoaded = true;
+        }
+
+        public async void LoadChartData()
+        {
+            HttpClient client = new HttpClient();
+
+            // base URL for API Controller i.e. RESTFul service
+            client.BaseAddress = new Uri("http://ujukebox.azurewebsites.net/");
+
+            // add an Accept header for JSON
+            client.DefaultRequestHeaders.
+            Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync("api/ujukeapi/");
+
+
+            var lists = await response.Content.ReadAsAsync<IEnumerable<Track>>();
+
+
+            // IEnumerable<Venue> listings = lists.OrderBy(list => lists.venueName);
+            //                // index id for list of items               //int newid = 0;
+
+            //// to hold real item id from db
+            string getId = "";
+            int newID = 0;
+            int position = 1;
+
             foreach (var listing in lists)
             {
                 //get the original id and save to getid
                 //getId = listing.ID;
                 getId = listing.ToString();
                 var ID = newID;
-                var lineone = listing.ToString();
-                var linetwo = listing.ToString();
+                var lineone = listing.Title.ToString();
+                var linetwo = listing.Artist.ToString();
+                var linethree = listing.Genre.ToString();
+                int linefour = listing.Vote;
 
                 //Real to pass the realid 
-                this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID.ToString(), LineOne = lineone, LineTwo = linetwo });
-
+                this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString() });
+                position++;
                 //newid is used to set ID to 0 - the index of the item in the displayed list
                 newID++;
 
             }
-           // LoadGenreData();
+            // LoadGenreData();
             this.IsDataLoaded = true;
         }
 

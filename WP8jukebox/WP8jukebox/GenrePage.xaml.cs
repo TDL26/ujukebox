@@ -41,14 +41,8 @@ namespace WP8jukebox
                 getVenue = NavigationContext.QueryString["getVenue"];
                 getGenre = NavigationContext.QueryString["getGenre"];
 
-                //NavigationService.Navigate(new Uri("/ChartPage.xaml" + "&getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
-                //NavigationService.Navigate(new Uri("/ChartPage.xaml" + "&getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
-                //NavigationService.Navigate(new Uri("/ChartPage.xaml", UriKind.Relative));
                 NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
-               // NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
-
-            
-           
+                                
             
             }
             else
@@ -78,7 +72,10 @@ namespace WP8jukebox
            
         }
 
-       
+        private void setDataContext()
+        {
+            ContentPanel.DataContext = getVenue;
+        }
 
 
 
@@ -89,12 +86,10 @@ namespace WP8jukebox
             if (MainLongListSelector.SelectedItem == null)
                 return;
 
-           // VenueInfo VenueInfo = new VenueInfo();
-            //VenueInfo.NameInfo = getName;
-
+           
             // Navigate to the new page
             NavigationService.Navigate(new Uri("/PlaylistPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue, UriKind.Relative));
-            //NavigationService.Navigate(new Uri("/PlaylistPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID, UriKind.Relative));
+       
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
         }

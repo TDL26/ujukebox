@@ -30,6 +30,7 @@ namespace WP8jukebox
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+           
 
             if (NavigationContext.QueryString.ContainsKey("getVenue"))
             {
@@ -85,10 +86,6 @@ namespace WP8jukebox
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/GenrePage.xaml" + "?fromChart=true" + "&getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
-
-            //NavigationService.Navigate(new Uri("/ChartPage.xaml" + "&getName=" + getName + "&getGenre=" + getGenre, UriKind.Relative));
-            //NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&fromChart=true", UriKind.Relative));
-
 
         }
 

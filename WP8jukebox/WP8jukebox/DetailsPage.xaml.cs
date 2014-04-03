@@ -17,6 +17,13 @@ namespace WP8jukebox
 {
     public partial class DetailsPage : PhoneApplicationPage
     {
+
+        //new viewmodel property to display page by vote order
+        public ItemViewModel tr;
+
+        //get real index of model
+        string getreal = "";
+
         string fromChart = "";
         // Constructor
         public DetailsPage()
@@ -34,6 +41,7 @@ namespace WP8jukebox
             string getGenre = "";
             string getTrack = "";
 
+            
             //hides vote acknowledgement popup 
             Text1.Visibility = Visibility.Collapsed;
         
@@ -43,7 +51,15 @@ namespace WP8jukebox
             getVenue = NavigationContext.QueryString["getVenue"];
             //getVenue = NavigationContext.QueryString["fromChart"];
 
+            string selectedIndex = "";
 
+            //navigated from playlist page
+            //if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+            //{
+            //    int index = int.Parse(selectedIndex);
+            //    DataContext = App.ViewModel.Items[index];
+            //    getreal = App.ViewModel.Items3[index].RealID;
+            //}
 
             if (NavigationContext.QueryString.TryGetValue("fromChart", out fromChart))
             {
@@ -55,12 +71,13 @@ namespace WP8jukebox
             
             if (DataContext == null)
                 {
-                    string selectedIndex = "";
+                    //string selectedIndex = "";
                     if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
                     {
                         int index = int.Parse(selectedIndex);
                         DataContext = App.ViewModel.Items3[index];
                         getTrack = App.ViewModel.Items3[index].LineOne;
+                        getreal = App.ViewModel.Items3[index].RealID;
 
                         
                        
@@ -77,21 +94,21 @@ namespace WP8jukebox
             ItemViewModel tr = (ItemViewModel)this.DataContext;
 
             //get the values to be sent to db to facilitate update PUT to db
-            //int id = Convert.ToInt32(getreal);
+            int id = Convert.ToInt32(getreal);
             string title = tr.LineOne;
             string artist = tr.LineTwo;
             string genre = tr.LineThree;
+            int vote = Convert.ToInt32(tr.LineFour);
             
-           // int vote = Convert.ToInt32(tr.LineFour);
-
+          
             //increment the vote number
-            //vote++;
+            vote++;
             //increment the displayed vote number
-            //tr.LineFour++;
+            tr.LineFour++;
 
             // base URL for API Controller i.e. RESTFul service
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://ujuke.azurewebsites.net/");
+            client.BaseAddress = new Uri("http://ujukebox.azurewebsites.net/");
 
             // add an Accept header for JSON
             client.DefaultRequestHeaders.
@@ -100,11 +117,11 @@ namespace WP8jukebox
             HttpResponseMessage response = await client.GetAsync("api/ujukeapi");
 
             //getreal sets the db id row to the correct value
-            //Track newListing = new Track { ID = getreal, Title = title, Artist = artist, Genre = genre, Vote = vote };
+            Track newListing = new Track { ID = getreal, Title = title, Artist = artist, Genre = genre, Vote = vote };
 
             // update by Put to /api/ujukeapi a listing serialised in request body
             //the +id is added to the url to address the correct row in the db
-           // response = await client.PutAsJsonAsync("api/ujukeapi/" + id, newListing);
+            response = await client.PutAsJsonAsync("api/ujukeapi/" + id, newListing);
 
             //if PUT fails
             if (!response.IsSuccessStatusCode)
@@ -118,7 +135,7 @@ namespace WP8jukebox
             Thread.Sleep(1000);
 
             //force a reload of the model so all pages have correct data
-            App.ViewModel = null;
+            ////App.ViewModel = null;
 
             //navigated to from chart page , then navigate back to that page
             if (fromChart == "true")
