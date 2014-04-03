@@ -24,7 +24,9 @@ namespace WP8jukebox
         //get real index of model
         string getreal = "";
 
+        //will be set to true if navigated to from chart page
         string fromChart = "";
+
         // Constructor
         public DetailsPage()
         {
@@ -49,7 +51,7 @@ namespace WP8jukebox
 
             getGenre = NavigationContext.QueryString["getGenre"];
             getVenue = NavigationContext.QueryString["getVenue"];
-            //getVenue = NavigationContext.QueryString["fromChart"];
+           //fromChart = NavigationContext.QueryString["fromChart"];
 
             string selectedIndex = "";
 
@@ -63,13 +65,25 @@ namespace WP8jukebox
 
             if (NavigationContext.QueryString.TryGetValue("fromChart", out fromChart))
             {
+                //check to see if navigated from chart page
+                if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+                {
+                    int index = int.Parse(selectedIndex);
+                    DataContext = App.ViewModel.Items4[index];
+                    getTrack = App.ViewModel.Items4[index].LineOne;
+                    getreal = App.ViewModel.Items4[index].RealID;
+                }
             }
-
-
-
-
-            
-            if (DataContext == null)
+            else
+            {
+                ////navigated from playlist page
+                //if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+                //{
+                //    int index = int.Parse(selectedIndex);
+                //    DataContext = App.ViewModel.Items[index];
+                //    getreal = App.ViewModel.Items[index].RealID;
+                //}
+                if (DataContext == null)
                 {
                     //string selectedIndex = "";
                     if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
@@ -79,10 +93,12 @@ namespace WP8jukebox
                         getTrack = App.ViewModel.Items3[index].LineOne;
                         getreal = App.ViewModel.Items3[index].RealID;
 
-                        
-                       
                     }
                 }
+            }
+
+                       
+           
             
         }
         //make the vote
