@@ -18,6 +18,9 @@ namespace WP8jukebox
     public partial class DetailsPage : PhoneApplicationPage
     {
 
+       public string getVenue = "";
+       public string getGenre = "";
+
         //new viewmodel property to display page by vote order
         public ItemViewModel tr;
 
@@ -39,8 +42,8 @@ namespace WP8jukebox
         // When page is navigated to set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string getVenue = "";
-            string getGenre = "";
+            //string getVenue = "";
+            //string getGenre = "";
             string getTrack = "";
 
             
@@ -151,17 +154,18 @@ namespace WP8jukebox
             Thread.Sleep(1000);
 
             //force a reload of the model so all pages have correct data
-            ////App.ViewModel = null;
+            App.ViewModel = null;
 
             //navigated to from chart page , then navigate back to that page
             if (fromChart == "true")
             {
-                NavigationService.Navigate(new Uri("/ChartPage.xaml", UriKind.Relative));
+
+                NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
             }
             else
             {
                 //else back to playlist page            
-                NavigationService.Navigate(new Uri("/PlaylistPage.xaml", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
             }
         }
 

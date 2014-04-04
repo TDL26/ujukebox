@@ -14,6 +14,7 @@ namespace WP8jukebox.ViewModels
     {
         // URI for RESTful service (implemented using Web API)
         //private const String serviceURI = "ttp://ujukebox.azurewebsites.net/";
+      
 
         public MainViewModel()
         {
@@ -270,13 +271,13 @@ namespace WP8jukebox.ViewModels
 
 
                 //Real to pass the realid 
-                this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString() });
+                this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString() });
                 position++;
                 //newid is used to set ID to 0 - the index of the item in the displayed list
                 newID++;
 
             }
-            // LoadGenreData();
+            //LoadChartData();
             this.IsDataLoaded = true;
         }
        // public async void LoadChartData()

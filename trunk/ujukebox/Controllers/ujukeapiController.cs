@@ -22,6 +22,12 @@ namespace ujukebox.Controllers
             return db.Tracks;
         }
 
+        //  // GET api/PlaylistApi
+        //public IQueryable<string> GetVote()
+        //{
+        //    return db.Tracks.OrderBy(c => c.Vote.ToString()).Select(c => c.Vote.ToString());
+        //}
+
         // GET api/ujukeapi/5
         [ResponseType(typeof(Track))]
         public IHttpActionResult GetTrack(int id)
