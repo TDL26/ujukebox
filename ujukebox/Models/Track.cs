@@ -18,7 +18,7 @@ namespace ujukebox.Models
         public string Title { get; set; }
         public string Artist { get; set; }
         public string Genre { get; set; }
-        public int Vote { get; set; }
+        public int Vote { get; set; }/////////////////////////////////////////////////////
         public string Club92 { get; set; }
         public string Coppers { get; set; }
     }

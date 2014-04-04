@@ -20,10 +20,19 @@ namespace WP8jukebox
         string getGenre = "";
         string fromChart = "";
         //string getName = "";
+
+        public static string genreBox { get; set; }
+        public static string venueBox { get; set; }
+
+       
           // Constructor
         public GenrePage()
         {
+            
             InitializeComponent();
+
+            // Set the data context to a new Recording.
+            
 
             // Set the data context of the LongListSelector control to the sample data
             DataContext = App.ViewModel;
@@ -40,6 +49,8 @@ namespace WP8jukebox
             {
                 getVenue = NavigationContext.QueryString["getVenue"];
                 getGenre = NavigationContext.QueryString["getGenre"];
+                venueBox = getVenue;
+
 
                 NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
                                 
@@ -55,12 +66,13 @@ namespace WP8jukebox
                     int index = int.Parse(selectedIndex);
                     //DataContext = App.ViewModel.Items[index];
                     getVenue = App.ViewModel.Items[index].LineOne;
-
+                   //genreBox = getVenue;
+                    venueBox = getVenue;
                 }
 
            
             
-                App.ViewModel = null;
+                //App.ViewModel = null;
                 if (!App.ViewModel.IsDataLoaded)
                 {
                     //DataContext = App.ViewModel.Items2;
@@ -68,6 +80,7 @@ namespace WP8jukebox
                 }
 
             }
+            textBox1.Text = venueBox;
             
            
         }

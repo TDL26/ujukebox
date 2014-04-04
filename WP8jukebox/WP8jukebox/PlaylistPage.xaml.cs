@@ -15,6 +15,8 @@ namespace WP8jukebox
     {
         string getVenue = "";
         string getGenre = "";
+        public static string genreBox { get; set; }
+        public static string venueBox { get; set; }
 
         public PlaylistPage()
         {
@@ -36,6 +38,10 @@ namespace WP8jukebox
             {
                 //string getName = NavigationContext.QueryString["getName"];
                 // etc ...
+                //venueBox = getVenue;
+                getVenue = NavigationContext.QueryString["getVenue"];
+                venueBox = getVenue;
+                textBox1.Text = venueBox;
             }
 
             string selectedIndex = "";
@@ -47,16 +53,20 @@ namespace WP8jukebox
                 //DataContext = App.ViewModel.Items[index];
                 getGenre = App.ViewModel.Items2[index].LineOne;
                 getVenue = NavigationContext.QueryString["getVenue"];
+                venueBox = getVenue;
+                textBox1.Text = venueBox;
 
             }
 
-           
-            App.ViewModel = null;
+            
+
+            //App.ViewModel = null;
             if (!App.ViewModel.IsDataLoaded)
             {
                 //DataContext = App.ViewModel.Items2;
                 App.ViewModel.LoadGenreData();
             }
+            
 
 
 
