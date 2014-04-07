@@ -15,10 +15,10 @@ namespace ujukebox.Controllers
         private ujukeboxdbEntities1 db = new ujukeboxdbEntities1();
 
         // GET: /ujukebox/
-        public ActionResult Index()
-        {
-            return View(db.Tracks.ToList());
-        }
+        //public ActionResult Index()
+        //{
+            //return View(db.Tracks.ToList());
+        //}
 
         // GET: /ujukebox/Details/5
         public ActionResult Details(int? id)

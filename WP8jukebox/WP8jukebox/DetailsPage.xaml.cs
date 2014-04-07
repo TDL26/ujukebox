@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Newtonsoft.Json;
 using WP8jukebox.Resources;
 using WP8jukebox.ViewModels;
 
@@ -17,14 +18,13 @@ namespace WP8jukebox
 {
     public partial class DetailsPage : PhoneApplicationPage
     {
-
        public string getVenue = "";
        public string getGenre = "";
 
         //new viewmodel property to display page by vote order
         public ItemViewModel tr;
 
-        //get real index of model
+        //get real db index of the model
         string getreal = "";
 
         //will be set to true if navigated to from chart page
@@ -34,24 +34,18 @@ namespace WP8jukebox
         public DetailsPage()
         {
             InitializeComponent();
-
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
 
-        // When page is navigated to set data context to selected item in list
+        // When page is navigated to, set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //string getVenue = "";
-            //string getGenre = "";
             string getTrack = "";
-
-            
+                        
             //hides vote acknowledgement popup 
             Text1.Visibility = Visibility.Collapsed;
         
-
-
             getGenre = NavigationContext.QueryString["getGenre"];
             getVenue = NavigationContext.QueryString["getVenue"];
            //fromChart = NavigationContext.QueryString["fromChart"];
@@ -133,22 +127,32 @@ namespace WP8jukebox
             client.DefaultRequestHeaders.
             Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/ujukeapi");
+            HttpResponseMessage response = await client.GetAsync("api/ujukeapi");   //fdoes terry need this!!!!"!
 
             //getreal sets the db id row to the correct value
-            Track newListing = new Track { ID = getreal, Title = title, Artist = artist, Genre = genre, Vote = vote };
+           Track newListing = new Track { ID = getreal, Title = title, Artist = artist, Genre = genre, Vote = vote };
+            
+            //this works
+           //// Track newListing = new Track { ID = "24", Title = "new.....put full terry to old row", Artist = "postTERRY", Genre = "TERRY", Vote = 999 };
 
+
+            //StockListing newListing = new StockListing() { TickerSymbol = "FB", Price = 34.1 };
+            //HttpResponseMessage response = client.PostAsJsonAsync("api/stock", newListing).Result;
+            //id = 24;
             // update by Put to /api/ujukeapi a listing serialised in request body
             //the +id is added to the url to address the correct row in the db
             response = await client.PutAsJsonAsync("api/ujukeapi/" + id, newListing);
+           // response = client.PostAsJsonAsync("api/ujukeapi/", newListing).Result;   //.Result;
+          //  response = client.PostAsXmlAsync("api/ujukeapi/", newListing).Result;    //.Result;
+
 
             //if PUT fails
-            if (!response.IsSuccessStatusCode)
-            {
-                //TODO
-                //Uri newStockUri = response.Headers.Location;
-                //Console.WriteLine(response.StatusCode + " " + response.ReasonPhrase);
-            }
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    //TODO
+            //    //Uri newStockUri = response.Headers.Location;
+            //    //Console.WriteLine(response.StatusCode + " " + response.ReasonPhrase);
+            //}
 
             //delay the page navigation so user can see vote acknowledgement                      
             Thread.Sleep(1000);
