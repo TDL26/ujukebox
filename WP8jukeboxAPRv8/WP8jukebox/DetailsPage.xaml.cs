@@ -75,6 +75,9 @@ namespace WP8jukebox
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //msg to acknowledge vote
+            Text2.Visibility = Visibility.Collapsed;
+
+            //msg to acknowledge vote
             Text1.Visibility = Visibility.Visible;
 
             ItemViewModel tr = (ItemViewModel)this.DataContext;
@@ -120,6 +123,10 @@ namespace WP8jukebox
             if (fromChart == "true")
             {
                 NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&fromChart=true" + "&fromDetails=true" + "&fromPlaylist=true", UriKind.Relative));
+                
+                //delay the page navigation so user can see vote acknowledgement                      
+                Thread.Sleep(1000);
+            
             }
             else
             {
@@ -135,6 +142,7 @@ namespace WP8jukebox
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            
         }
     }
 }
