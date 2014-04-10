@@ -50,10 +50,9 @@
                 <TextBlock Text="{Binding LineFour}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#99E2E3EC" FontSize="36"/>
             </StackPanel>
 
-            <Button x:Name="Text2" Content="Click Here To Vote" HorizontalAlignment="Center" Margin="0,442,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="456" Height="94" Foreground="#FFF5F9A7" BorderBrush="#996FFF59"/>
+            <Button x:Name="Text2" Content="Click Here To Vote" HorizontalAlignment="Center" Margin="0,442,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="456" Height="94" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontSize="26"/>
 
-            <TextBox x:Name="Text1" Height="93" Margin="0,368,0,98" TextWrapping="Wrap" Text=" Thank You for Your Vote!" Width="456" TextChanged="TextBox_TextChanged" FontWeight="Bold" RenderTransformOrigin="0.609,0.486" Background="#FFEE1515" SelectionBackground="Red" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Padding="2,10,2,2" FontFamily="Segoe WP Semibold" 
-                     />
+            <TextBox x:Name="Text1" Height="93" Margin="0,368,0,98" TextWrapping="Wrap" Text=" Thank You for Your Vote!" Width="456" TextChanged="TextBox_TextChanged"  RenderTransformOrigin="0.609,0.486" Background="#FFEE1515" SelectionBackground="Red" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Padding="2,10,2,2" FontFamily="Segoe WP Semibold" FontSize="28"/>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
