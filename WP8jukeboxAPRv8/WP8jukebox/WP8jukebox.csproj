@@ -96,9 +96,6 @@
     <Compile Include="ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Choice.xaml.cs">
-      <DependentUpon>Choice.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GenrePage.xaml.cs">
       <DependentUpon>GenrePage.xaml</DependentUpon>
     </Compile>
@@ -118,11 +115,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Track.cs" />
+    <Compile Include="ViewModels\Track.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\Venue.cs" />
-    <Compile Include="ViewModels\VenueInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -130,10 +125,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="ChartPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Choice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -27,21 +27,10 @@ namespace WP8jukebox
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
-            {
-                getVenue = NavigationContext.QueryString["getVenue"];
-                venueBox = getVenue;
-                textBox1.Text = venueBox;
-            }
-            
-            if (NavigationContext.QueryString.ContainsKey("getVenue"))
-            {
-                getVenue = NavigationContext.QueryString["getVenue"];
-                venueBox = getVenue;
-                textBox1.Text = venueBox;
-            }
-      
+            getVenue = NavigationContext.QueryString["getVenue"];
+            venueBox = getVenue;
+            textBox1.Text = venueBox;
+               
             //App.ViewModel = null;
             if (!App.ViewModel.IsDataLoaded)
             {

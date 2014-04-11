@@ -22,21 +22,15 @@ namespace WP8jukebox
                        
             // Set the data context of the LongListSelector control to the sample data
             DataContext = App.ViewModel;
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (NavigationContext.QueryString.ContainsKey("getVenue"))
-            {
-                getVenue = NavigationContext.QueryString["getVenue"];
-                venueBox = getVenue;
-                textBox1.Text = venueBox;
-            }
-
+            getVenue = NavigationContext.QueryString["getVenue"];
+            venueBox = getVenue;
+            textBox1.Text = venueBox;
+            
             //App.ViewModel = null;
             if (!App.ViewModel.IsDataLoaded)
             {
@@ -56,11 +50,6 @@ namespace WP8jukebox
 
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue  + "&fromChart=true", UriKind.Relative));
         }
     }
 }

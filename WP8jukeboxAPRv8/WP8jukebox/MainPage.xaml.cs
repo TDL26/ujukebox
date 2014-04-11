@@ -19,7 +19,7 @@ namespace WP8jukebox
         {
             InitializeComponent();
 
-            // Set the data context of the LongListSelector control to the sample data
+            // Set the data context of the LongListSelector control to the data
             DataContext = App.ViewModel;
         }
 

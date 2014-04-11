@@ -30,14 +30,12 @@ namespace WP8jukebox
             // Set the data context of the LongListSelector control to the sample data
             DataContext = App.ViewModel;
 
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //check for back button press to by pass reload of model
+            //check for back button press to by-pass reload of model
             base.OnNavigatedTo(e);
             if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
             { 
@@ -47,22 +45,18 @@ namespace WP8jukebox
                //get the id from the passed selected item in the list
                string selectedIndex = "";
                //navigated from playlist page
-                  if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
-                  {
-                      //get the passed in venue choice from index
-                      int index = int.Parse(selectedIndex);
-                      getVenue = App.ViewModel.Items[index].LineOne;
-                      venueBox = getVenue;
-                      textBox1.Text = venueBox;
-                  }
+               if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+               {
+                   //get the passed in venue choice from index
+                   int index = int.Parse(selectedIndex);
+                   getVenue = App.ViewModel.Items[index].LineOne;
+                   venueBox = getVenue;
+                   textBox1.Text = venueBox;
+               }
              }
                   
             //force a reload of model with correct votes behind
             App.ViewModel = null;
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                //App.ViewModel.LoadGenreData();
-            }          
         }
 
         private void setDataContext()
