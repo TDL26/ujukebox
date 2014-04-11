@@ -117,16 +117,16 @@ namespace WP8jukebox
                 //TODO
             }
 
-           
+
 
             //navigated to from chart page , then navigate back to that page
             if (fromChart == "true")
             {
                 NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&fromChart=true" + "&fromDetails=true" + "&fromPlaylist=true", UriKind.Relative));
-                
+
                 //delay the page navigation so user can see vote acknowledgement                      
                 Thread.Sleep(1000);
-            
+
             }
             else
             {
@@ -142,7 +142,7 @@ namespace WP8jukebox
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
     }
 }
