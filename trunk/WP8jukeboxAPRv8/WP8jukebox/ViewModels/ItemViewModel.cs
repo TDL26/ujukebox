@@ -145,6 +145,100 @@ namespace WP8jukebox.ViewModels
             }
         }
 
+         private int _lineSix;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineSix
+         {
+             get
+             {
+                 return _lineSix;
+             }
+             set
+             {
+                 if (value != _lineSix)
+                 {
+                     _lineSix = value;
+                     NotifyPropertyChanged("LineSix");
+                 }
+             }
+         }
+
+         private int _lineSeven;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineSeven
+         {
+             get
+             {
+                 return _lineSeven;
+             }
+             set
+             {
+                 if (value != _lineSeven)
+                 {
+                     _lineSeven = value;
+                     NotifyPropertyChanged("LineSeven");
+                 }
+             }
+         }
+
+         private int _lineEight;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineEight
+         {
+             get
+             {
+                 return _lineEight;
+             }
+             set
+             {
+                 if (value != _lineEight)
+                 {
+                     _lineEight = value;
+                     NotifyPropertyChanged("LineEight");
+                 }
+             }
+         }
+
+         private int _lineNine;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineNine
+         {
+             get
+             {
+                 return _lineNine;
+             }
+             set
+             {
+                 if (value != _lineNine)
+                 {
+                     _lineNine = value;
+                     NotifyPropertyChanged("LineNine");
+                 }
+             }
+         }
+
+         private string _venue;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public string Venue
+         {
+             get
+             {
+                 return _venue;
+             }
+             set
+             {
+                 if (value != _venue)
+                 {
+                     _venue = value;
+                     NotifyPropertyChanged("Venue");
+                 }
+             }
+         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

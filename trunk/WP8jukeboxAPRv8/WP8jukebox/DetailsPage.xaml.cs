@@ -14,6 +14,7 @@ namespace WP8jukebox
     {
         public string getVenue = "";
         public static string venueBox { get; set; }
+        public string venue = "";
 
         //new viewmodel property to display page by vote order
         public ItemViewModel tr;
@@ -21,7 +22,7 @@ namespace WP8jukebox
         //get real index of model
         string getreal = "";
         string fromChart = "";
-        //string fromPlaylist = "";
+        
 
         // Constructor
         public DetailsPage()
@@ -80,6 +81,8 @@ namespace WP8jukebox
             //msg to acknowledge vote
             Text1.Visibility = Visibility.Visible;
 
+            App.ViewModel = null;
+
             ItemViewModel tr = (ItemViewModel)this.DataContext;
 
             //get the values to be sent to db to facilitate update PUT to db
@@ -87,29 +90,59 @@ namespace WP8jukebox
             string title = tr.LineOne;
             string artist = tr.LineTwo;
             string genre = tr.LineThree;
-            int vote = Convert.ToInt32(tr.LineFour);
+            int venuevote = Convert.ToInt32(tr.LineFour);
+            int popbar = Convert.ToInt32(tr.LineSix);
+            int partyclub = Convert.ToInt32(tr.LineSeven);
+            int rockbar = Convert.ToInt32(tr.LineEight);
+            int danceclub = Convert.ToInt32(tr.LineNine);
+            //int vote = 0;
 
-            //increment the vote number
-            vote++;
+            
+            venue = getVenue.Replace(" ", string.Empty);
+
+            if (venue == "PopBar")
+            {
+                popbar++;
+            }
+            if (venue == "PartyClub")
+            {
+                partyclub++;
+                
+            }
+            if (venue == "RockBar")
+            {
+                rockbar++;
+                
+            }
+            if (venue == "DanceClub")
+            {
+                danceclub++;
+                
+            }
+
+           
+
+
+           
             //increment the displayed vote number
             tr.LineFour++;
 
             // base URL for API Controller i.e. RESTFul service
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://ujukebox.azurewebsites.net/");
+            client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
 
             // add an Accept header for JSON
             client.DefaultRequestHeaders.
             Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/ujukeapi");
+            HttpResponseMessage response = await client.GetAsync("api/jukeapi");
 
             //getreal sets the db id row to the correct value
-            Track newListing = new Track { ID = getreal, Title = title, Artist = artist, Genre = genre, Vote = vote };
+            Track newListing = new Track { TrackID = getreal, Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString()};
 
             // update by Put to /api/ujukeapi a listing serialised in request body
             //the +id is added to the url to address the correct row in the db
-            response = await client.PutAsJsonAsync("api/ujukeapi/" + id, newListing);
+            response = await client.PutAsJsonAsync("api/jukeapi/" + id, newListing);
 
             //if PUT fails
             if (!response.IsSuccessStatusCode)
@@ -122,7 +155,7 @@ namespace WP8jukebox
             //navigated to from chart page , then navigate back to that page
             if (fromChart == "true")
             {
-                NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&fromChart=true" + "&fromDetails=true" + "&fromPlaylist=true", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&fromChart=true" + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
 
                 //delay the page navigation so user can see vote acknowledgement                      
                 Thread.Sleep(1000);
@@ -131,7 +164,7 @@ namespace WP8jukebox
             else
             {
                 //else back to playlist page            
-                NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
 
                 //delay the page navigation so user can see vote acknowledgement                      
                 Thread.Sleep(1000);
