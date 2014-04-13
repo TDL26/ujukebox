@@ -9,13 +9,15 @@ namespace WP8jukebox
 {
     class Track
     {
-        public string ID { get; set; }
+        public string TrackID { get; set; }
         public string Title { get; set; }      
         public string Artist { get; set; }       
         public string Genre { get; set; }    
         public int Vote { get; set; }
-        public string Club92 { get; set; }
-        public string Coppers { get; set; }
-        public string Buskers { get; set; }
+        public string PopBar { get; set; }
+        public string PartyClub { get; set; }
+        public string RockBar { get; set; }
+        public string DanceClub { get; set; }
+        public string Venue { get; set; }
     }
 }

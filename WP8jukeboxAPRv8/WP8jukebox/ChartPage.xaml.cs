@@ -10,6 +10,7 @@ namespace WP8jukebox
     {
          string getVenue = "";
          public static string venueBox { get; set; }
+         //string venus = "";
 
         public ChartPage()
         {
@@ -23,6 +24,7 @@ namespace WP8jukebox
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             getVenue = NavigationContext.QueryString["getVenue"];
+           // getVenue = NavigationContext.QueryString["venue"];
             venueBox = getVenue;
             textBox1.Text = venueBox;
             

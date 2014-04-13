@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using WP8jukebox.ViewModels;
 
 namespace WP8jukebox
 {
@@ -9,7 +10,8 @@ namespace WP8jukebox
     {
         //store the venue name
         string getVenue = "";
-       
+        
+                     
         // setter for text box
         public static string venueBox { get; set; }
 
@@ -45,6 +47,10 @@ namespace WP8jukebox
                    textBox1.Text = venueBox;
                }
              }
+
+            AVenue.TheVenue = getVenue.Replace(" ", string.Empty);
+
+                 
                   
             //force a reload of model with correct votes behind
             App.ViewModel = null;
