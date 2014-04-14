@@ -140,9 +140,25 @@ namespace WP8jukebox
             //getreal sets the db id row to the correct value
             Track newListing = new Track { TrackID = getreal, Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString()};
 
-            // update by Put to /api/ujukeapi a listing serialised in request body
-            //the +id is added to the url to address the correct row in the db
+            ////////////////// update by Put to /api/ujukeapi a listing serialised in request body
+            //////////////////the +id is added to the url to address the correct row in the db
             response = await client.PutAsJsonAsync("api/jukeapi/" + id, newListing);
+
+            //Track newListing = new Track {TrackID = "7", Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString(), Venue = "test new row" };
+
+            //////// update by Put to /api/ujukeapi a listing serialised in request body
+            ////////the +id is added to the url to address the correct row in the db
+            //response = await client.PostAsJsonAsync("api/jukeapi/", newListing);
+
+            //Track newListing = new Track { TrackID = "6", Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString(), Venue = "test new row" };
+
+
+            //delete works
+            //////////////////////id = 3;
+            //////////////////////// update by Put to /api/ujukeapi a listing serialised in request body
+            ////////////////////////the +id is added to the url to address the correct row in the db
+            //////////////////////response = await client.DeleteAsync("api/jukeapi/" + id);
+
 
             //if PUT fails
             if (!response.IsSuccessStatusCode)

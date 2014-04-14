@@ -47,16 +47,17 @@
                     <ColumnDefinition Width="300" />
                     <ColumnDefinition Width="70" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Search the Playlist" TextWrapping="Wrap"  Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36" Grid.Row="0" Grid.ColumnSpan="2" Margin="10,0,17,0" />
-                <TextBlock Text="Click Here..." TextWrapping="Wrap"  Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36" Margin="10,0,125,136" Grid.Row="1" Grid.ColumnSpan="2" />
+                <TextBlock Text="Search the Playlist" TextWrapping="Wrap"  Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36" Grid.Row="0" Grid.ColumnSpan="2" Margin="10,-22,17,22" />
+                <TextBlock Text="Click Here..." TextWrapping="Wrap"  Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36" Margin="10,10,125,174" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
-                <TextBlock Text="Search the Chart" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36" Grid.Row="3" Margin="10,0,84,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="Click Here...  " TextWrapping="NoWrap" TextTrimming ="WordEllipsis"  Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF0AF5F5" FontSize="36" Grid.Row="3" Margin="10,51,41,84" Grid.ColumnSpan="2" />
+                <TextBlock Text="Search the Chart" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36" Grid.Row="1" Margin="10,100,84,132" Grid.ColumnSpan="2" Grid.RowSpan="3" />
+                <TextBlock Text="Click Here...  " TextWrapping="NoWrap" TextTrimming ="WordEllipsis"  Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF0AF5F5" FontSize="36" Grid.Row="1" Margin="10,136,41,0" Grid.ColumnSpan="2" />
+                <Button Content="Administration" Margin="0,127,-16,0" VerticalAlignment="Top" Click="Button_Click_1" Height="94" FontSize="36" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontFamily="Segoe WP SemiLight" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2"/>
             </Grid>
 
-            <Button Content="Playlist" HorizontalAlignment="Left" Margin="0,93,0,0" VerticalAlignment="Top" Click="Button_Click" Height="96" Width="456" FontSize="36" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontFamily="Segoe WP SemiLight"/>
-            <Button Content="Chart List" Margin="0,372,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="94" FontSize="36" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontFamily="Segoe WP SemiLight"/>
+            <Button Content="Playlist" HorizontalAlignment="Left" Margin="0,65,0,0" VerticalAlignment="Top" Click="Button_Click" Height="96" Width="456" FontSize="36" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontFamily="Segoe WP SemiLight"/>
+            <Button Content="Chart List" Margin="0,234,0,0" VerticalAlignment="Top" Click="Button_Click_2" Height="94" FontSize="36" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontFamily="Segoe WP SemiLight"/>
         </Grid>
-      </Grid>
+    </Grid>
 
 </phone:PhoneApplicationPage>
