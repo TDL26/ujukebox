@@ -71,6 +71,12 @@ namespace WP8jukebox
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
            // button click navigates to chart page and forwards getVenue
+            NavigationService.Navigate(new Uri("/AdminPage.xaml?getVenue=" + getVenue, UriKind.Relative));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            // button click navigates to chart page and forwards getVenue
             NavigationService.Navigate(new Uri("/ChartPage.xaml?getVenue=" + getVenue, UriKind.Relative));
         }
      }
