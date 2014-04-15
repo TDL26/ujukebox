@@ -15,10 +15,8 @@ namespace WP8jukebox
     {
         private static MainViewModel viewModel = null;
 
-        /// <summary>
-        /// A static ViewModel used by the views to bind against.
-        /// </summary>
-        /// <returns>The MainViewModel object.</returns>
+        // A static ViewModel used by the views to bind against.
+        // <returns>The MainViewModel object.</returns>
         public static MainViewModel ViewModel
         {
             get
@@ -37,15 +35,12 @@ namespace WP8jukebox
             }
         }
 
-        /// <summary>
-        /// Provides easy access to the root frame of the Phone Application.
-        /// </summary>
-        /// <returns>The root frame of the Phone Application.</returns>
+        // Provides easy access to the root frame of the Phone Application.
+        // <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
-        /// <summary>
-        /// Constructor for the Application object.
-        /// </summary>
+        // Constructor for the Application object.
+       
         public App()
         {
             // Global handler for uncaught exceptions.
