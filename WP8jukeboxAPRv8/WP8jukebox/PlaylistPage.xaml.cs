@@ -10,6 +10,7 @@ namespace WP8jukebox
     {
         string getVenue = "";
         string fromAdmin = "";
+        string fromEdit = "";
         public static string venueBox { get; set; }
                                        
         public PlaylistPage()
@@ -28,6 +29,7 @@ namespace WP8jukebox
             textBox1.Text = venueBox;
 
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
+            NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
            
                
             //App.ViewModel = null;
@@ -44,9 +46,19 @@ namespace WP8jukebox
             if (MainLongListSelector.SelectedItem == null)
                 return;
 
-            // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID+"&getVenue="+getVenue+ "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin, UriKind.Relative));
+            if (fromEdit == "fromEdit")
+            {
+                // Navigate to the new page
+                NavigationService.Navigate(new Uri("/EditTrack.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
 
+            }
+            else
+            {
+                // Navigate to the new page
+                NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
+
+            }
+         
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
         }

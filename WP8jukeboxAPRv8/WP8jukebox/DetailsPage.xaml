@@ -34,11 +34,22 @@
 
 
         <!--ContentPanel contains details text. Place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Margin="12,157,12,10" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="313*"/>
+                <ColumnDefinition Width="116*"/>
+                <ColumnDefinition Width="27*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
 
-            <StackPanel x:Name="MainPanel" Grid.Row="0" Margin="2,-42,10,48" >
-                <TextBlock Text="Title:" Margin="9,0,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59"  FontSize="24" />
-                 <TextBlock Text="{Binding LineOne}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" FontSize="36" Foreground="#FF0AF5F5"/>
+            <StackPanel x:Name="MainPanel" Grid.Row="0" Margin="12,34,0,-10" Grid.RowSpan="2" Grid.ColumnSpan="3" >
+                <TextBlock Text="Title:" Margin="9,0,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="55"  FontSize="24" />
+
+                <TextBlock Text="{Binding LineOne}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="60" FontSize="36" Foreground="#FF0AF5F5"/>
+
 
                 <TextBlock Text="Artist:" Margin="9,0,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59"  FontSize="24"/>
                 <TextBlock Text="{Binding LineTwo}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#996FFF59"  FontSize="36"/>
@@ -50,14 +61,15 @@
                 <TextBlock Text="{Binding LineFour}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#99E2E3EC" FontSize="36"/>
             </StackPanel>
 
-            <Button x:Name="Text3" Content="Delete this Track" HorizontalAlignment="Center" Margin="0,465,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="456" Height="94" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontSize="26"/>
+            <Button x:Name="Text3" Content="Delete this Track" HorizontalAlignment="Center" Margin="0,465,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="456" Height="94" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontSize="26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+      
 
+            <Button x:Name="Text2" Content="Click Here To Vote" HorizontalAlignment="Center" Margin="0,465,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="456" Height="94" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontSize="26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
 
-            <Button x:Name="Text2" Content="Click Here To Vote" HorizontalAlignment="Center" Margin="0,417,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="456" Height="94" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontSize="26"/>
-
-            <TextBox x:Name="Text1" Height="93" Margin="0,394,0,72" TextWrapping="Wrap" Text=" Thank You for Your Vote!" Width="456" TextChanged="TextBox_TextChanged"  RenderTransformOrigin="0.609,0.486" Background="#FFEE1515" SelectionBackground="Red" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Padding="2,10,2,2" FontFamily="Segoe WP Semibold" FontSize="28"/>
-            <TextBox x:Name="Text4" Height="93" Margin="0,394,0,72" TextWrapping="Wrap" Text=" Track Deleted " Width="456" TextChanged="TextBox_TextChanged"  RenderTransformOrigin="0.609,0.486" Background="#FFEE1515" SelectionBackground="Red" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Padding="2,10,2,2" FontFamily="Segoe WP Semibold" FontSize="28"/>
-           </Grid>
+            <TextBox x:Name="Text1" Margin="0,423,0,29" TextWrapping="Wrap" Text=" Thank You for Your Vote!" Width="456" TextChanged="TextBox_TextChanged"  RenderTransformOrigin="0.609,0.486" Background="#FFEE1515" SelectionBackground="Red" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Padding="2,10,2,2" FontFamily="Segoe WP Semibold" FontSize="28" Grid.ColumnSpan="3"/>
+            <TextBox x:Name="Text4" Height="93" Margin="0,409,0,43" TextWrapping="Wrap" Text=" Track Deleted " Width="456" TextChanged="TextBox_TextChanged"  RenderTransformOrigin="0.609,0.486" Background="#FFEE1515" SelectionBackground="Red" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Padding="2,10,2,2" FontFamily="Segoe WP Semibold" FontSize="28" Grid.ColumnSpan="3"/>
+       
+        </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
