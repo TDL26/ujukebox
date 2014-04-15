@@ -10,8 +10,7 @@ namespace WP8jukebox
     {
         //store the venue name
         string getVenue = "";
-        
-                     
+                             
         // setter for text box
         public static string venueBox { get; set; }
 
@@ -22,7 +21,6 @@ namespace WP8jukebox
 
             // Set the data context of the LongListSelector control to the sample data
             DataContext = App.ViewModel;
-
         }
 
         // Load data for the ViewModel Items
@@ -49,9 +47,7 @@ namespace WP8jukebox
              }
 
             AVenue.TheVenue = getVenue.Replace(" ", string.Empty);
-
-                 
-                  
+                         
             //force a reload of model with correct votes behind
             App.ViewModel = null;
         }
@@ -65,7 +61,6 @@ namespace WP8jukebox
         {
             // button click navigates to playlist page and forwards getVenue
             NavigationService.Navigate(new Uri("/PlaylistPage.xaml?getVenue=" + getVenue, UriKind.Relative));
-       
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

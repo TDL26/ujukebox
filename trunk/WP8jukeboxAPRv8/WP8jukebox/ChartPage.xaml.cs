@@ -11,8 +11,6 @@ namespace WP8jukebox
          string getVenue = "";
          public static string venueBox { get; set; }
         
-         //string venus = "";
-
         public ChartPage()
         {
             InitializeComponent();
@@ -29,7 +27,6 @@ namespace WP8jukebox
             venueBox = getVenue;
             textBox1.Text = venueBox;
             
-            //App.ViewModel = null;
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadChartData();

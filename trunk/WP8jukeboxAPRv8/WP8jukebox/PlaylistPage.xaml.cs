@@ -12,7 +12,7 @@ namespace WP8jukebox
         string fromAdmin = "";
         string fromEdit = "";
         public static string venueBox { get; set; }
-                                       
+
         public PlaylistPage()
         {
             InitializeComponent();
@@ -30,12 +30,11 @@ namespace WP8jukebox
 
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
             NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
-           
-               
+
             //App.ViewModel = null;
             if (!App.ViewModel.IsDataLoaded)
             {
-               App.ViewModel.LoadPlaylistData();
+                App.ViewModel.LoadPlaylistData();
             }
         }
 
@@ -50,15 +49,13 @@ namespace WP8jukebox
             {
                 // Navigate to the new page
                 NavigationService.Navigate(new Uri("/EditTrack.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
-
             }
             else
             {
                 // Navigate to the new page
                 NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
-
             }
-         
+
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
         }

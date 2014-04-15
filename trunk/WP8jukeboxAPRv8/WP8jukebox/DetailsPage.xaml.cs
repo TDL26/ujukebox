@@ -38,19 +38,13 @@ namespace WP8jukebox
             Text1.Visibility = Visibility.Collapsed;
             Text3.Visibility = Visibility.Collapsed;
             Text4.Visibility = Visibility.Collapsed;
-            //Text5.Visibility = Visibility.Collapsed;
-            //Text6.Visibility = Visibility.Collapsed;
-
+         
             string selectedIndex = "";
-
             getVenue = NavigationContext.QueryString["getVenue"];
             venueBox = getVenue;
             textBox1.Text = venueBox;
 
-            if (NavigationContext.QueryString.TryGetValue("fromChart", out fromChart))
-            {
-            }
-
+            NavigationContext.QueryString.TryGetValue("fromChart", out fromChart);
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
             NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
 
@@ -66,9 +60,7 @@ namespace WP8jukebox
             {
                 Text1.Visibility = Visibility.Collapsed;
                 Text2.Visibility = Visibility.Collapsed;
-               // Text5.Visibility = Visibility.Visible;
                 Text4.Visibility = Visibility.Collapsed;
-                //Text6.Visibility = Visibility.Collapsed;
             }  
 
             //check if navigated to from chart, load Items4
@@ -95,7 +87,6 @@ namespace WP8jukebox
                     getreal = App.ViewModel.Items3[index].RealID;
                 }
             }
-
         }
         //make the vote
         private async void Button_Click_1(object sender, RoutedEventArgs e)
@@ -184,7 +175,7 @@ namespace WP8jukebox
              }
         }
 
-        //Deleat a Track
+        //Delete a Track
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Text3.Visibility = Visibility.Collapsed;
@@ -221,10 +212,7 @@ namespace WP8jukebox
 
             //delay the page navigation so user can see vote acknowledgement                      
             Thread.Sleep(1000);
-
         }
-
-       
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
