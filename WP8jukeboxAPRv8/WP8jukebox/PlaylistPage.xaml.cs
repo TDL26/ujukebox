@@ -9,9 +9,9 @@ namespace WP8jukebox
     public partial class PlaylistPage : PhoneApplicationPage
     {
         string getVenue = "";
+        string fromAdmin = "";
         public static string venueBox { get; set; }
-        //string venue = "";
-                               
+                                       
         public PlaylistPage()
         {
             InitializeComponent();
@@ -24,9 +24,11 @@ namespace WP8jukebox
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             getVenue = NavigationContext.QueryString["getVenue"];
-           // getVenue = NavigationContext.QueryString["venue"];
             venueBox = getVenue;
             textBox1.Text = venueBox;
+
+            NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
+           
                
             //App.ViewModel = null;
             if (!App.ViewModel.IsDataLoaded)
@@ -43,7 +45,7 @@ namespace WP8jukebox
                 return;
 
             // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID+"&getVenue="+getVenue+ "&fromPlaylist=true", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID+"&getVenue="+getVenue+ "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin, UriKind.Relative));
 
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
