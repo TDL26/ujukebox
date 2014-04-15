@@ -125,6 +125,7 @@ namespace WP8jukebox.ViewModels
 
             foreach (var listing in lists3)
             {
+                               
                 //get the original id and save to getid
                 //getId = listing.ID;
                 getId = listing.TrackID.ToString();
@@ -158,12 +159,17 @@ namespace WP8jukebox.ViewModels
                 {
                     linefour = linenine;
                 }
-               
-                //Real to pass the realid 
-                this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(),LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine  });
-                position++;
-                //newid is used to set ID to 0 - the index of the item in the displayed list
-                newID3++;
+
+                if (linefour > 0)
+                {
+                    //Real to pass the realid 
+                    this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine });
+                    position++;
+                    //newid is used to set ID to 0 - the index of the item in the displayed list
+                    newID3++;
+                   
+                }
+                
             }
           
             this.IsDataLoaded = true;
@@ -243,13 +249,15 @@ namespace WP8jukebox.ViewModels
                     linefour = linenine;
                 }
 
+                if (linefour > 0)
+                {
+                    //Real to pass the realid 
+                    this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID4.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine });
+                    position++;
 
-                //Real to pass the realid 
-                this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID4.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine });
-                position++;
-
-                //newid is used to set ID to 0 - the index of the item in the displayed list
-                newID4++;
+                    //newid is used to set ID to 0 - the index of the item in the displayed list
+                    newID4++;
+                }
             }
          
             this.IsDataLoaded = true;
