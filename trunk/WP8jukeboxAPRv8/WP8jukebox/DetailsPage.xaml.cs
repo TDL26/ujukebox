@@ -23,8 +23,8 @@ namespace WP8jukebox
         string getreal = "";
         string fromChart = "";
         string fromAdmin = "";
+        string fromEdit = "";
         
-
         // Constructor
         public DetailsPage()
         {
@@ -38,6 +38,8 @@ namespace WP8jukebox
             Text1.Visibility = Visibility.Collapsed;
             Text3.Visibility = Visibility.Collapsed;
             Text4.Visibility = Visibility.Collapsed;
+            //Text5.Visibility = Visibility.Collapsed;
+            //Text6.Visibility = Visibility.Collapsed;
 
             string selectedIndex = "";
 
@@ -50,6 +52,7 @@ namespace WP8jukebox
             }
 
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
+            NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
 
             if (fromAdmin == "fromAdmin")
             {
@@ -57,9 +60,18 @@ namespace WP8jukebox
                 Text2.Visibility = Visibility.Collapsed;
                 Text3.Visibility = Visibility.Visible;
                 Text4.Visibility = Visibility.Collapsed;
-            }   
+            }
 
-            //chect if navigated to from chart, load Items4
+            if (fromEdit == "fromEdit")
+            {
+                Text1.Visibility = Visibility.Collapsed;
+                Text2.Visibility = Visibility.Collapsed;
+               // Text5.Visibility = Visibility.Visible;
+                Text4.Visibility = Visibility.Collapsed;
+                //Text6.Visibility = Visibility.Collapsed;
+            }  
+
+            //check if navigated to from chart, load Items4
             if (fromChart == "true")
             {
                 if (DataContext == null)
@@ -144,33 +156,15 @@ namespace WP8jukebox
             //getreal sets the db id row to the correct value
             Track newListing = new Track { TrackID = getreal, Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString()};
 
-            ////////////////// update by Put to /api/ujukeapi a listing serialised in request body
-            //////////////////the +id is added to the url to address the correct row in the db
+            // update by Put to /api/ujukeapi a listing serialised in request body
+            //the +id is added to the url to address the correct row in the db
             response = await client.PutAsJsonAsync("api/jukeapi/" + id, newListing);
-
-            //Track newListing = new Track {TrackID = "7", Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString(), Venue = "test new row" };
-
-            //////// update by Put to /api/ujukeapi a listing serialised in request body
-            ////////the +id is added to the url to address the correct row in the db
-            //response = await client.PostAsJsonAsync("api/jukeapi/", newListing);
-
-            //Track newListing = new Track { TrackID = "6", Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString(), Venue = "test new row" };
-
-
-            //delete works
-            //////////////////////id = 3;
-            //////////////////////// update by Put to /api/ujukeapi a listing serialised in request body
-            ////////////////////////the +id is added to the url to address the correct row in the db
-            //////////////////////response = await client.DeleteAsync("api/jukeapi/" + id);
-
 
             //if PUT fails
             if (!response.IsSuccessStatusCode)
             {
                 //TODO
             }
-
-
 
             //navigated to from chart page , then navigate back to that page
             if (fromChart == "true")
@@ -179,7 +173,6 @@ namespace WP8jukebox
 
                 //delay the page navigation so user can see vote acknowledgement                      
                 Thread.Sleep(1000);
-
             }
             else
             {
@@ -191,13 +184,7 @@ namespace WP8jukebox
              }
         }
 
-        
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
-
+        //Deleat a Track
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Text3.Visibility = Visibility.Collapsed;
@@ -228,13 +215,19 @@ namespace WP8jukebox
             {
                 //TODO
             }
-
-              
+                          
             //back to playlist page            
-            NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/AdminPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
 
             //delay the page navigation so user can see vote acknowledgement                      
             Thread.Sleep(1000);
+
+        }
+
+       
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
         }
     }
