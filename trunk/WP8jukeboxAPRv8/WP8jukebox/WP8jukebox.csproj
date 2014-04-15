@@ -99,9 +99,6 @@
     <Compile Include="ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Delete.xaml.cs">
-      <DependentUpon>Delete.xaml</DependentUpon>
-    </Compile>
     <Compile Include="EditTrack.xaml.cs">
       <DependentUpon>EditTrack.xaml</DependentUpon>
     </Compile>
@@ -142,10 +139,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChartPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Delete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

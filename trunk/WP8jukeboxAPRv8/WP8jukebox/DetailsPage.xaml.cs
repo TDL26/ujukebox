@@ -22,6 +22,7 @@ namespace WP8jukebox
         //get real index of model
         string getreal = "";
         string fromChart = "";
+        string fromAdmin = "";
         
 
         // Constructor
@@ -35,6 +36,8 @@ namespace WP8jukebox
         {
             //hides vote acknowledgement popup 
             Text1.Visibility = Visibility.Collapsed;
+            Text3.Visibility = Visibility.Collapsed;
+            Text4.Visibility = Visibility.Collapsed;
 
             string selectedIndex = "";
 
@@ -45,6 +48,16 @@ namespace WP8jukebox
             if (NavigationContext.QueryString.TryGetValue("fromChart", out fromChart))
             {
             }
+
+            NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
+
+            if (fromAdmin == "fromAdmin")
+            {
+                Text1.Visibility = Visibility.Collapsed;
+                Text2.Visibility = Visibility.Collapsed;
+                Text3.Visibility = Visibility.Visible;
+                Text4.Visibility = Visibility.Collapsed;
+            }   
 
             //chect if navigated to from chart, load Items4
             if (fromChart == "true")
@@ -95,9 +108,7 @@ namespace WP8jukebox
             int partyclub = Convert.ToInt32(tr.LineSeven);
             int rockbar = Convert.ToInt32(tr.LineEight);
             int danceclub = Convert.ToInt32(tr.LineNine);
-            //int vote = 0;
-
-            
+                       
             venue = getVenue.Replace(" ", string.Empty);
 
             if (venue == "PopBar")
@@ -107,23 +118,16 @@ namespace WP8jukebox
             if (venue == "PartyClub")
             {
                 partyclub++;
-                
             }
             if (venue == "RockBar")
             {
                 rockbar++;
-                
             }
             if (venue == "DanceClub")
             {
                 danceclub++;
-                
             }
-
-           
-
-
-           
+                                 
             //increment the displayed vote number
             tr.LineFour++;
 
@@ -184,13 +188,53 @@ namespace WP8jukebox
 
                 //delay the page navigation so user can see vote acknowledgement                      
                 Thread.Sleep(1000);
-
-                //NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre + "&fromChart=true"+ "&fromDetails=true", UriKind.Relative));
-            }
+             }
         }
+
+        
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Text3.Visibility = Visibility.Collapsed;
+            Text4.Visibility = Visibility.Visible;
+
+            App.ViewModel = null;
+
+            ItemViewModel tr = (ItemViewModel)this.DataContext;
+
+            //get the values to be sent to db to facilitate update PUT to db
+            int id = Convert.ToInt32(getreal);
+            
+            // base URL for API Controller i.e. RESTFul service
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
+
+            // add an Accept header for JSON
+            client.DefaultRequestHeaders.
+            Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync("api/jukeapi");
+
+            //delete works
+            response = await client.DeleteAsync("api/jukeapi/" + id);
+            
+            //if PUT fails
+            if (!response.IsSuccessStatusCode)
+            {
+                //TODO
+            }
+
+              
+            //back to playlist page            
+            NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
+
+            //delay the page navigation so user can see vote acknowledgement                      
+            Thread.Sleep(1000);
 
         }
     }
