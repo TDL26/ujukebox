@@ -3,9 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Web
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WebApplication1", "WebApplication1\WebApplication1.vbproj", "{385D10D1-FF5A-4B81-B97E-30CCA1F35938}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{9F6813B4-CF27-43B5-AB02-A1E38A46D428}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WebApplication1.Tests", "WebApplication1.Tests\WebApplication1.Tests.vbproj", "{E4E0156B-2A40-4D4D-9AF1-380EDD1374FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1.Tests", "WebApplication1.Tests\WebApplication1.Tests.csproj", "{FFD98367-5D3C-414D-9E25-C49B18CB2415}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{3D90E8DC-1D18-4F19-98F2-B3F09D7C253E}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebAppPublishModule.psm1 = PublishScripts\AzureWebAppPublishModule.psm1
+		PublishScripts\Publish-WebApplication.ps1 = PublishScripts\Publish-WebApplication.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{CB154F79-D3C2-4D23-BC56-F6BADEB2ED09}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\WebApplication1-WAWS-dev.json = PublishScripts\Configurations\WebApplication1-WAWS-dev.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +24,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{385D10D1-FF5A-4B81-B97E-30CCA1F35938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{385D10D1-FF5A-4B81-B97E-30CCA1F35938}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{385D10D1-FF5A-4B81-B97E-30CCA1F35938}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{385D10D1-FF5A-4B81-B97E-30CCA1F35938}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4E0156B-2A40-4D4D-9AF1-380EDD1374FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4E0156B-2A40-4D4D-9AF1-380EDD1374FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4E0156B-2A40-4D4D-9AF1-380EDD1374FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4E0156B-2A40-4D4D-9AF1-380EDD1374FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F6813B4-CF27-43B5-AB02-A1E38A46D428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F6813B4-CF27-43B5-AB02-A1E38A46D428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F6813B4-CF27-43B5-AB02-A1E38A46D428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F6813B4-CF27-43B5-AB02-A1E38A46D428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD98367-5D3C-414D-9E25-C49B18CB2415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD98367-5D3C-414D-9E25-C49B18CB2415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD98367-5D3C-414D-9E25-C49B18CB2415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD98367-5D3C-414D-9E25-C49B18CB2415}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CB154F79-D3C2-4D23-BC56-F6BADEB2ED09} = {3D90E8DC-1D18-4F19-98F2-B3F09D7C253E}
 	EndGlobalSection
 EndGlobal

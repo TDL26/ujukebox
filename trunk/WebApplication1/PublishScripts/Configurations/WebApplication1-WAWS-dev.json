@@ -1,13 +1,13 @@
 {
     "environmentSettings": {
         "webSite": {
-            "name": "jukesite",
+            "name": "jukebox",
             "location": "North Europe"
         },
         "databases": [
             {
                 "connectionStringName": "DefaultConnection",
-                "databaseName": "jukesite_db",
+                "databaseName": "jukebox_db",
                 "serverName": "dqt59jb9x9",
                 "user": "juke",
                 "password": "",
