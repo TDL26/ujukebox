@@ -111,7 +111,11 @@ namespace WP8jukebox
             int partyclub = Convert.ToInt32(tr.LineSeven);
             int rockbar = Convert.ToInt32(tr.LineEight);
             int danceclub = Convert.ToInt32(tr.LineNine);
-                       
+            int alternativebar = Convert.ToInt32(tr.LineTen);
+            int popclub = Convert.ToInt32(tr.LineEleven);
+            int rnbclub = Convert.ToInt32(tr.LineTwelve);
+
+
             venue = getVenue.Replace(" ", string.Empty);
 
             if (venue == "PopBar")
@@ -130,6 +134,18 @@ namespace WP8jukebox
             {
                 danceclub++;
             }
+            if (venue == "AlternativeBar")
+            {
+                alternativebar++;
+            }
+            if (venue == "PopClub")
+            {
+                popclub++;
+            }
+            if (venue == "RnbClub")
+            {
+                rnbclub++;
+            }
                                  
             //increment the displayed vote number
             tr.LineFour++;
@@ -145,7 +161,7 @@ namespace WP8jukebox
             HttpResponseMessage response = await client.GetAsync("api/jukeapi");
 
             //getreal sets the db id row to the correct value
-            Track newListing = new Track { TrackID = getreal, Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString()};
+            Track newListing = new Track { TrackID = getreal, Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString(), AlternativeBar = alternativebar.ToString(), PopClub = popclub.ToString(), RnbClub = rnbclub.ToString() };
 
             // update by Put to /api/ujukeapi a listing serialised in request body
             //the +id is added to the url to address the correct row in the db

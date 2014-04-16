@@ -221,6 +221,64 @@ namespace WP8jukebox.ViewModels
              }
          }
 
+         private int _lineTen;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineTen
+         {
+             get
+             {
+                 return _lineTen;
+             }
+             set
+             {
+                 if (value != _lineTen)
+                 {
+                     _lineTen = value;
+                     NotifyPropertyChanged("LineTen");
+                 }
+             }
+         }
+
+         private int _lineEleven;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineEleven
+         {
+             get
+             {
+                 return _lineEleven;
+             }
+             set
+             {
+                 if (value != _lineEleven)
+                 {
+                     _lineEleven = value;
+                     NotifyPropertyChanged("LineEleven");
+                 }
+             }
+         }
+
+         private int _lineTwelve;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineTwelve
+         {
+             get
+             {
+                 return _lineTwelve;
+             }
+             set
+             {
+                 if (value != _lineTwelve)
+                 {
+                     _lineTwelve = value;
+                     NotifyPropertyChanged("LineTwelve");
+                 }
+             }
+         }
+
+
          private string _venue;
 
          /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
