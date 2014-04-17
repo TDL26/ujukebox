@@ -18,7 +18,7 @@ namespace WP8jukebox
         public string PartyClub { get; set; }
         public string RockBar { get; set; }
         public string DanceClub { get; set; }
-        public string Venue { get; set; }
+        //public string Venue { get; set; }
         public string AlternativeBar { get; set; }
         public string PopClub { get; set; }
         public string RnbClub { get; set; }
