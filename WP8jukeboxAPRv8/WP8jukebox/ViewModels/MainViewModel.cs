@@ -212,19 +212,31 @@ namespace WP8jukebox.ViewModels
 
             if (thevenue == "PopBar")
             {
-                li = lists4.OrderByDescending(c => c.PopBar);
+                li = lists4.OrderByDescending(c => Int32.Parse(c.PopBar));
             }
             else if (thevenue == "PartyClub")
             {
-                li = lists4.OrderByDescending(c => c.PartyClub);
+                li = lists4.OrderByDescending(c => Int32.Parse(c.PartyClub));
             }
             else if (thevenue == "RockBar")
             {
-                li = lists4.OrderByDescending(c => c.RockBar);
+                li = lists4.OrderByDescending(c => Int32.Parse(c.RockBar));
             }
-            else 
+            else if (thevenue == "DanceClub")
             {
-                li = lists4.OrderByDescending(c => c.DanceClub);
+                li = lists4.OrderByDescending(c => Int32.Parse(c.DanceClub));
+            }
+             else if (thevenue == "AlternativeBar")
+            {
+                li = lists4.OrderByDescending(c => Int32.Parse(c.AlternativeBar));
+            }
+            else if (thevenue == "PopClub") 
+            {
+                li = lists4.OrderByDescending(c => Int32.Parse(c.PopClub));
+            }
+             else 
+            {
+                li = lists4.OrderByDescending(c => Int32.Parse(c.RnbClub));
             }
 
                       
