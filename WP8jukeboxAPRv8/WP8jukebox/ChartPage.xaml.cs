@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 using WP8jukebox.ViewModels;
 
 namespace WP8jukebox
@@ -29,6 +30,12 @@ namespace WP8jukebox
             
             if (!App.ViewModel.IsDataLoaded)
             {
+                ProgressIndicator prog = new ProgressIndicator();
+                prog.IsVisible = true;
+                prog.IsIndeterminate = true;
+                prog.Text = "Downloading Data from the Cloud...";
+                SystemTray.SetProgressIndicator(this, prog); 
+                
                 App.ViewModel.LoadChartData();
             }
         }
