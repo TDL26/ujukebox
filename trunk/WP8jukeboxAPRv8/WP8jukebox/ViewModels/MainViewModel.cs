@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Windows;
+using System.Windows.Navigation;
 using WP8jukebox.Resources;
 
 
@@ -20,6 +22,7 @@ namespace WP8jukebox.ViewModels
             this.Items4 = new ObservableCollection<ItemViewModel>();
         }
 
+      
         /// A collection for ItemViewModel objects.
         public ObservableCollection<ItemViewModel> Items { get; private set; }   //venue
         public ObservableCollection<ItemViewModel> Items3 { get; private set; }  //playlist
@@ -60,45 +63,71 @@ namespace WP8jukebox.ViewModels
             private set;
         }
 
+             
+
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         public async void LoadVenueData()
         {
-           HttpClient client = new HttpClient();
-
-           // base URL for API Controller i.e. RESTFul service
-           client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");       
-
-           // add an Accept header for JSON
-           client.DefaultRequestHeaders.
-           Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-           HttpResponseMessage response = await client.GetAsync("api/venueapi");
-                
-           // read result     
-           var lists = await response.Content.ReadAsAsync<IEnumerable<string>>();
-
-           //get the incoming id - ie the db id
-           string getId = "";
-           
-           //set the new id for the list view to 0 
-           int newID = 0;
-           
-            foreach (var listing in lists)
+            try
             {
-              getId = listing.ToString();
-              var ID = newID;
-              var lineone = listing.ToString();
-              var linetwo = listing.ToString();
+                HttpClient client = new HttpClient();
 
-              //Real to pass the realid 
-              this.Items.Add(new ItemViewModel() { RealID = getId, ID = newID.ToString(), LineOne = lineone, LineTwo = linetwo });
+                // base URL for API Controller i.e. RESTFul service
+                client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
 
-              //newid is used to set ID to 0 - the index of the item in the displayed list
-              newID++;
-                 
+                // add an Accept header for JSON
+                client.DefaultRequestHeaders.
+                Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync("api/venueapi");
+
+                // read result     
+                var lists = await response.Content.ReadAsAsync<IEnumerable<string>>();
+
+                //get the incoming id - ie the db id
+                string getId = "";
+
+                //set the new id for the list view to 0 
+                int newID = 0;
+
+                foreach (var listing in lists)
+                {
+                    getId = listing.ToString();
+                    var ID = newID;
+                    var lineone = listing.ToString();
+                    var linetwo = listing.ToString();
+
+                    //Real to pass the realid 
+                    this.Items.Add(new ItemViewModel() { RealID = getId, ID = newID.ToString(), LineOne = lineone, LineTwo = linetwo });
+
+                    //newid is used to set ID to 0 - the index of the item in the displayed list
+                    newID++;
+
+                }
+
+                this.IsDataLoaded = true;
             }
+            catch (Exception)
+            {
+                MessageBoxResult result =
+    MessageBox.Show("You seem to be having trouble connecting to the Network!\n\nCheck that you have a network connection.\n\nTry Again?",
+    "Network Error!", MessageBoxButton.OKCancel);
 
-            this.IsDataLoaded = true;
+
+                if (result == MessageBoxResult.OK)
+                {
+                    //MessageBox.Show("Try Again?");
+                    LoadVenueData();
+                   
+                }
+                else
+                {
+                   
+                }
+                //throw;
+            }
+           
+            
         }
 
         public async void LoadPlaylistData()

@@ -1,16 +1,26 @@
-﻿<xapCache source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\WP8jukebox_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="17/04/2014 13:08:42">
-  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\obj\Debug\WP8jukebox.dll" archivePath="WP8jukebox.dll" lastWriteTime="17/04/2014 13:08:41" />
+﻿<xapCache source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\WP8jukebox_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="19/04/2014 12:00:28">
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\obj\Debug\WP8jukebox.dll" archivePath="WP8jukebox.dll" lastWriteTime="19/04/2014 12:00:26" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\159x159.png" archivePath="159x159.png" lastWriteTime="18/04/2014 20:17:29" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\336x336.png" archivePath="336x336.png" lastWriteTime="18/04/2014 20:45:27" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\99x99.png" archivePath="99x99.png" lastWriteTime="18/04/2014 20:45:27" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\APPLICATION_ICON_99X99.PNG" archivePath="APPLICATION_ICON_99X99.PNG" lastWriteTime="19/04/2014 10:57:12" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="28/03/2014 15:26:56" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="28/03/2014 15:26:56" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="28/03/2014 15:26:56" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="28/03/2014 15:26:56" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="28/03/2014 15:26:56" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="28/03/2014 15:26:56" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="28/03/2014 15:26:56" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\images\MEDICON.png" archivePath="images\MEDICON.png" lastWriteTime="19/04/2014 11:22:59" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\images\SMALL.PNG" archivePath="images\SMALL.PNG" lastWriteTime="19/04/2014 11:22:59" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\images\SMALLICON.png" archivePath="images\SMALLICON.png" lastWriteTime="19/04/2014 11:22:59" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\MEDIUM_ICON_202X202.png" archivePath="MEDIUM_ICON_202X202.png" lastWriteTime="19/04/2014 10:57:12" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Scripts\jquery-2.1.0.intellisense.js" archivePath="Scripts\jquery-2.1.0.intellisense.js" lastWriteTime="28/03/2014 15:51:48" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Scripts\jquery-2.1.0.js" archivePath="Scripts\jquery-2.1.0.js" lastWriteTime="28/03/2014 15:51:48" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Scripts\jquery-2.1.0.min.js" archivePath="Scripts\jquery-2.1.0.min.js" lastWriteTime="28/03/2014 15:51:48" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\SMALLICON.png" archivePath="SMALLICON.png" lastWriteTime="19/04/2014 11:14:14" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\SMALL_ICON_110X110.png" archivePath="SMALL_ICON_110X110.png" lastWriteTime="19/04/2014 10:57:12" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="17/04/2014 07:56:00" />
-  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="28/03/2014 15:26:56" />
-  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="28/03/2014 15:26:56" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="28/03/2014 15:50:18" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.dll" archivePath="System.Net.Http.dll" lastWriteTime="28/03/2014 15:28:14" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll" archivePath="System.Net.Http.Extensions.dll" lastWriteTime="28/03/2014 15:28:14" />
@@ -21,5 +31,7 @@
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Extensions.xml" archivePath="System.Net.Http.Extensions.xml" lastWriteTime="28/03/2014 15:28:14" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\packages\Microsoft.AspNet.WebApi.Client.5.1.1\lib\portable-wp8+netcore45+net45\System.Net.Http.Formatting.xml" archivePath="System.Net.Http.Formatting.xml" lastWriteTime="28/03/2014 15:46:24" />
   <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Primitives.xml" archivePath="System.Net.Http.Primitives.xml" lastWriteTime="28/03/2014 15:28:14" />
-  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="17/04/2014 07:56:00" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\MEDICON.png" archivePath="MEDICON.png" lastWriteTime="19/04/2014 11:14:14" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\SMALL.PNG" archivePath="SMALL.PNG" lastWriteTime="19/04/2014 11:14:14" />
+  <file source="D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="19/04/2014 11:21:11" />
 </xapCache>

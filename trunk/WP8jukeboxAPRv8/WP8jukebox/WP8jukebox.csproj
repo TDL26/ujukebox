@@ -203,6 +203,10 @@
     <None Include="Scripts\jquery-2.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="159x159.png" />
+    <Content Include="336x336.png" />
+    <Content Include="99x99.png" />
+    <Content Include="APPLICATION_ICON_99X99.PNG" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -222,9 +226,17 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\MEDICON.png" />
+    <Content Include="images\SMALL.PNG" />
+    <Content Include="images\SMALLICON.png" />
+    <Content Include="MEDICON.png" />
+    <Content Include="MEDIUM_ICON_202X202.png" />
     <Content Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="SMALL.PNG" />
+    <Content Include="SMALLICON.png" />
+    <Content Include="SMALL_ICON_110X110.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
