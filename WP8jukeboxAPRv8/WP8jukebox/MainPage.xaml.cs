@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
@@ -20,8 +21,9 @@ namespace WP8jukebox
         }
 
          // Load data for the ViewModel Items
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {     
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+               
             base.OnNavigatedTo(e);
 
             //check is navigation is from a back button press - is so set the viewmodel to null  
@@ -43,7 +45,7 @@ namespace WP8jukebox
                 App.ViewModel.LoadVenueData();
                                         
             }
-
+            await Task.Delay(TimeSpan.FromSeconds(1));   
        }
 
 

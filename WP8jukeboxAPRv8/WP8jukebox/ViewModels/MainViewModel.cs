@@ -124,7 +124,7 @@ namespace WP8jukebox.ViewModels
                 }
            }
 
-            SystemTray.ProgressIndicator.IsVisible = false; 
+            //SystemTray.ProgressIndicator.IsVisible = false; 
         }
 
         public async void LoadPlaylistData()
