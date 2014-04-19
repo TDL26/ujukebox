@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{5d6b6b57-53b7-4d24-8527-53f2c51af1c3}" Title="WP8jukebox" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="WP8jukebox author" Description="Sample description" Publisher="WP8jukebox" PublisherID="{00e162c8-2a8b-4cc0-a749-01b3aacf69e6}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+  <App xmlns="" ProductID="{5d6b6b57-53b7-4d24-8527-53f2c51af1c3}" Title="UJukeBox" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="WP8jukebox author" Description="Vote for the songs you would like to hear at your favourite Venue." Publisher="WP8jukebox" PublisherID="{00e162c8-2a8b-4cc0-a749-01b3aacf69e6}">
+    <IconPath IsRelative="true" IsResource="false">SMALL.PNG</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -16,10 +16,10 @@
     <Tokens>
       <PrimaryToken TokenID="WP8jukeboxToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">SMALLICON.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>WP8jukebox</Title>
+          <BackgroundImageURI IsRelative="true" IsResource="false">MEDICON.png</BackgroundImageURI>
+          <Title>UJukeBox</Title>
           <BackContent></BackContent>
           <BackBackgroundImageURI></BackBackgroundImageURI>
           <BackTitle></BackTitle>
