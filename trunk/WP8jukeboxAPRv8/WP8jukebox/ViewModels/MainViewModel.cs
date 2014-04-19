@@ -5,8 +5,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 using System.Windows;
 using System.Windows.Navigation;
+using Microsoft.Phone.Shell;
 using WP8jukebox.Resources;
 
 
@@ -19,10 +21,9 @@ namespace WP8jukebox.ViewModels
             this.Items = new ObservableCollection<ItemViewModel>();
             this.Items3 = new ObservableCollection<ItemViewModel>();
             this.Items4 = new ObservableCollection<ItemViewModel>();
-            this.Items4 = new ObservableCollection<ItemViewModel>();
+            this.Items4 = new ObservableCollection<ItemViewModel>();  
         }
-
-      
+              
         /// A collection for ItemViewModel objects.
         public ObservableCollection<ItemViewModel> Items { get; private set; }   //venue
         public ObservableCollection<ItemViewModel> Items3 { get; private set; }  //playlist
@@ -62,13 +63,11 @@ namespace WP8jukebox.ViewModels
             get;
             private set;
         }
-
-             
-
+   
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         public async void LoadVenueData()
         {
-            try
+             try
             {
                 HttpClient client = new HttpClient();
 
@@ -106,234 +105,266 @@ namespace WP8jukebox.ViewModels
                 }
 
                 this.IsDataLoaded = true;
+                SystemTray.ProgressIndicator.IsVisible = false;
+               
             }
             catch (Exception)
             {
                 MessageBoxResult result =
-    MessageBox.Show("You seem to be having trouble connecting to the Network!\n\nCheck that you have a network connection.\n\nTry Again?",
-    "Network Error!", MessageBoxButton.OKCancel);
-
+                MessageBox.Show("You seem to be having trouble connecting to the Network!\n\nCheck that you have a network connection.\n\nTry Again?",
+                "Network Error!", MessageBoxButton.OKCancel);
 
                 if (result == MessageBoxResult.OK)
                 {
-                    //MessageBox.Show("Try Again?");
                     LoadVenueData();
-                   
                 }
                 else
                 {
-                   
+                    MessageBox.Show("Press the Back button to Exit the application.");
                 }
-                //throw;
-            }
-           
-            
+           }
+
+            SystemTray.ProgressIndicator.IsVisible = false; 
         }
 
         public async void LoadPlaylistData()
         {
-            HttpClient client = new HttpClient();
-
-            // base URL for API Controller i.e. RESTFul service
-            client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
-
-            // add an Accept header for JSON
-            client.DefaultRequestHeaders.
-            Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = await client.GetAsync("api/playlistapi/");
-                                  
-            var lists3 = await response.Content.ReadAsAsync<IEnumerable<Track>>();
-
-            //////////////////var li = lists3.OrderBy(c => c.Title);
- 
-            //// to hold real item id from db
-            string getId = "";
-            int newID3 = 0;
-            int position = 1;
-
-            foreach (var listing in lists3)
+            try
             {
-                               
-                //get the original id and save to getid
-                //getId = listing.ID;
-                getId = listing.TrackID.ToString();
-                var ID = newID3;
-                var lineone = listing.Title.ToString();
-                var linetwo = listing.Artist.ToString();
-                var linethree = listing.Genre.ToString();
-                int linefour = 0;
-                int linesix = Int32.Parse(listing.PopBar);
-                int lineseven = Int32.Parse(listing.PartyClub);
-                int lineeight = Int32.Parse(listing.RockBar);
-                int linenine = Int32.Parse(listing.DanceClub);
-                int lineten = Int32.Parse(listing.AlternativeBar);
-                int lineeleven = Int32.Parse(listing.PopClub);
-                int linetwelve = Int32.Parse(listing.RnbClub);
-               // int venuevote = 0;
+                HttpClient client = new HttpClient();
+
+                // base URL for API Controller i.e. RESTFul service
+                client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
+
+                // add an Accept header for JSON
+                client.DefaultRequestHeaders.
+                Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync("api/playlistapi/");
+
+                var lists3 = await response.Content.ReadAsAsync<IEnumerable<Track>>();
+
+                //// to hold real item id from db
+                string getId = "";
+                int newID3 = 0;
+                int position = 1;
+
+                foreach (var listing in lists3)
+                {
+
+                    //get the original id and save to getid
+                    //getId = listing.ID;
+                    getId = listing.TrackID.ToString();
+                    var ID = newID3;
+                    var lineone = listing.Title.ToString();
+                    var linetwo = listing.Artist.ToString();
+                    var linethree = listing.Genre.ToString();
+                    int linefour = 0;
+                    int linesix = Int32.Parse(listing.PopBar);
+                    int lineseven = Int32.Parse(listing.PartyClub);
+                    int lineeight = Int32.Parse(listing.RockBar);
+                    int linenine = Int32.Parse(listing.DanceClub);
+                    int lineten = Int32.Parse(listing.AlternativeBar);
+                    int lineeleven = Int32.Parse(listing.PopClub);
+                    int linetwelve = Int32.Parse(listing.RnbClub);
+                    // int venuevote = 0;
+
+                    string thevenue = AVenue.TheVenue;
+
+                    if (thevenue == "PopBar")
+                    {
+                        linefour = linesix;
+                    }
+                    if (thevenue == "PartyClub")
+                    {
+                        linefour = lineseven;
+                    }
+                    if (thevenue == "RockBar")
+                    {
+                        linefour = lineeight;
+                    }
+
+                    if (thevenue == "DanceClub")
+                    {
+                        linefour = linenine;
+                    }
+                    if (thevenue == "AlternativeBar")
+                    {
+                        linefour = lineten;
+                    }
+                    if (thevenue == "PopClub")
+                    {
+                        linefour = lineeleven;
+                    }
+                    if (thevenue == "RnbClub")
+                    {
+                        linefour = linetwelve;
+                    }
+                    
+                    if (linefour > 0)
+                    {
+                        //Real to pass the realid 
+                        this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
+                        position++;
+                        //newid is used to set ID to 0 - the index of the item in the displayed list
+                        newID3++;
+                    }
+                }
+
+                this.IsDataLoaded = true;
+                SystemTray.ProgressIndicator.IsVisible = false;
+            }
+            catch (Exception)
+            {
+                MessageBoxResult result =
+               MessageBox.Show("You seem to be having trouble connecting to the Network!\n\nCheck that you have a network connection.\n\nTry Again?",
+               "Network Error!", MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+
+                    LoadVenueData();
+
+                }
+                else
+                {
+                    MessageBox.Show("Press the Back button to Exit the application.");
+                }
+            }
+        }
+
+        public async void LoadChartData()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                // base URL for API Controller i.e. RESTFul service
+                client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
+
+                // add an Accept header for JSON
+                client.DefaultRequestHeaders.
+                Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync("api/chartapi/");
+
+                var lists4 = await response.Content.ReadAsAsync<IEnumerable<Track>>();
+                var li = lists4;
 
                 string thevenue = AVenue.TheVenue;
 
                 if (thevenue == "PopBar")
                 {
-                    linefour = linesix;
+                    li = lists4.OrderByDescending(c => Int32.Parse(c.PopBar));
                 }
-                if (thevenue == "PartyClub")
+                else if (thevenue == "PartyClub")
                 {
-                    linefour = lineseven;
+                    li = lists4.OrderByDescending(c => Int32.Parse(c.PartyClub));
                 }
-                if (thevenue == "RockBar")
+                else if (thevenue == "RockBar")
                 {
-                    linefour = lineeight;
+                    li = lists4.OrderByDescending(c => Int32.Parse(c.RockBar));
+                }
+                else if (thevenue == "DanceClub")
+                {
+                    li = lists4.OrderByDescending(c => Int32.Parse(c.DanceClub));
+                }
+                else if (thevenue == "AlternativeBar")
+                {
+                    li = lists4.OrderByDescending(c => Int32.Parse(c.AlternativeBar));
+                }
+                else if (thevenue == "PopClub")
+                {
+                    li = lists4.OrderByDescending(c => Int32.Parse(c.PopClub));
+                }
+                else
+                {
+                    li = lists4.OrderByDescending(c => Int32.Parse(c.RnbClub));
                 }
 
-                if (thevenue == "DanceClub")
+
+                //// to hold real item id from db
+                string getId = "";
+                int newID4 = 0;
+                int position = 1;
+
+                foreach (var listing in li)
                 {
-                    linefour = linenine;
-                }
-                if (thevenue == "AlternativeBar")
-                {
-                    linefour = lineten;
-                }
-                if (thevenue == "PopClub")
-                {
-                    linefour = lineeleven;
-                }
-                if (thevenue == "RnbClub")
-                {
-                    linefour = linetwelve;
+                    getId = listing.TrackID.ToString();
+                    var ID = newID4;
+                    var lineone = listing.Title.ToString();
+                    var linetwo = listing.Artist.ToString();
+                    var linethree = listing.Genre.ToString();
+                    int linefour = listing.Vote;
+                    int linesix = Int32.Parse(listing.PopBar);
+                    int lineseven = Int32.Parse(listing.PartyClub);
+                    int lineeight = Int32.Parse(listing.RockBar);
+                    int linenine = Int32.Parse(listing.DanceClub);
+                    int lineten = Int32.Parse(listing.AlternativeBar);
+                    int lineeleven = Int32.Parse(listing.PopClub);
+                    int linetwelve = Int32.Parse(listing.RnbClub);
+
+                    thevenue = AVenue.TheVenue;
+
+                    if (thevenue == "PopBar")
+                    {
+                        linefour = linesix;
+                    }
+                    if (thevenue == "PartyClub")
+                    {
+                        linefour = lineseven;
+                    }
+                    if (thevenue == "RockBar")
+                    {
+                        linefour = lineeight;
+                    }
+                    if (thevenue == "DanceClub")
+                    {
+                        linefour = linenine;
+                    }
+                    if (thevenue == "AlternativeBar")
+                    {
+                        linefour = lineten;
+                    }
+                    if (thevenue == "PopClub")
+                    {
+                        linefour = lineeleven;
+                    }
+                    if (thevenue == "RnbClub")
+                    {
+                        linefour = linetwelve;
+                    }
+
+                    if (linefour > 0)
+                    {
+                        //Real to pass the realid 
+                        this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID4.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
+                        position++;
+
+                        //newid is used to set ID to 0 - the index of the item in the displayed list
+                        newID4++;
+                    }
                 }
 
-
-
-                if (linefour > 0)
-                {
-                    //Real to pass the realid 
-                    this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
-                    position++;
-                    //newid is used to set ID to 0 - the index of the item in the displayed list
-                    newID3++;
-                   
-                }
-                
+                this.IsDataLoaded = true;
+                SystemTray.ProgressIndicator.IsVisible = false;
             }
-          
-            this.IsDataLoaded = true;
-        }
-
-        public async void LoadChartData()
-        {
-            HttpClient client = new HttpClient();
-
-            // base URL for API Controller i.e. RESTFul service
-            client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
-
-            // add an Accept header for JSON
-            client.DefaultRequestHeaders.
-            Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = await client.GetAsync("api/chartapi/");
-
-            var lists4 = await response.Content.ReadAsAsync<IEnumerable<Track>>();
-            var li = lists4;
-
-            string thevenue = AVenue.TheVenue;
-
-            if (thevenue == "PopBar")
+            catch (Exception)
             {
-                li = lists4.OrderByDescending(c => Int32.Parse(c.PopBar));
-            }
-            else if (thevenue == "PartyClub")
-            {
-                li = lists4.OrderByDescending(c => Int32.Parse(c.PartyClub));
-            }
-            else if (thevenue == "RockBar")
-            {
-                li = lists4.OrderByDescending(c => Int32.Parse(c.RockBar));
-            }
-            else if (thevenue == "DanceClub")
-            {
-                li = lists4.OrderByDescending(c => Int32.Parse(c.DanceClub));
-            }
-             else if (thevenue == "AlternativeBar")
-            {
-                li = lists4.OrderByDescending(c => Int32.Parse(c.AlternativeBar));
-            }
-            else if (thevenue == "PopClub") 
-            {
-                li = lists4.OrderByDescending(c => Int32.Parse(c.PopClub));
-            }
-             else 
-            {
-                li = lists4.OrderByDescending(c => Int32.Parse(c.RnbClub));
-            }
+                MessageBoxResult result =
+                MessageBox.Show("You seem to be having trouble connecting to the Network!\n\nCheck that you have a network connection.\n\nTry Again?",
+                "Network Error!", MessageBoxButton.OKCancel);
 
-                      
-            //// to hold real item id from db
-            string getId = "";
-            int newID4 = 0;
-            int position = 1;
-
-            foreach (var listing in li)
-            {
-                getId = listing.TrackID.ToString();
-                var ID = newID4;
-                var lineone = listing.Title.ToString();
-                var linetwo = listing.Artist.ToString();
-                var linethree = listing.Genre.ToString();
-                int linefour = listing.Vote;
-                int linesix = Int32.Parse(listing.PopBar);
-                int lineseven = Int32.Parse(listing.PartyClub);
-                int lineeight = Int32.Parse(listing.RockBar);
-                int linenine = Int32.Parse(listing.DanceClub);
-                int lineten = Int32.Parse(listing.AlternativeBar);
-                int lineeleven = Int32.Parse(listing.PopClub);
-                int linetwelve = Int32.Parse(listing.RnbClub);
-
-                thevenue = AVenue.TheVenue;
-
-                if (thevenue == "PopBar")
+                if (result == MessageBoxResult.OK)
                 {
-                    linefour = linesix;
+                    LoadVenueData();
                 }
-                if (thevenue == "PartyClub")
+                else
                 {
-                    linefour = lineseven;
-                }
-                if (thevenue == "RockBar")
-                {
-                    linefour = lineeight;
-                }
-
-                if (thevenue == "DanceClub")
-                {
-                    linefour = linenine;
-                }
-                if (thevenue == "AlternativeBar")
-                {
-                    linefour = lineten;
-                }
-                if (thevenue == "PopClub")
-                {
-                    linefour = lineeleven;
-                }
-                if (thevenue == "RnbClub")
-                {
-                    linefour = linetwelve;
-                }
-
-                if (linefour > 0)
-                {
-                    //Real to pass the realid 
-                    this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID4.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
-                    position++;
-
-                    //newid is used to set ID to 0 - the index of the item in the displayed list
-                    newID4++;
+                    MessageBox.Show("Press the Back button to Exit the application.");
                 }
             }
-         
-            this.IsDataLoaded = true;
+       
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

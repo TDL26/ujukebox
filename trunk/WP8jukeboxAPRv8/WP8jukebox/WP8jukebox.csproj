@@ -237,6 +237,7 @@
     <Content Include="SMALL.PNG" />
     <Content Include="SMALLICON.png" />
     <Content Include="SMALL_ICON_110X110.png" />
+    <Content Include="SplashScreenImage .jpg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">

@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 using WP8jukebox.ViewModels;
 
 namespace WP8jukebox
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        // Constructor
+       // Constructor
         public MainPage()
         {
             InitializeComponent();
@@ -17,9 +19,9 @@ namespace WP8jukebox
             DataContext = App.ViewModel;
         }
 
-        // Load data for the ViewModel Items
+         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
+        {     
             base.OnNavigatedTo(e);
 
             //check is navigation is from a back button press - is so set the viewmodel to null  
@@ -28,13 +30,22 @@ namespace WP8jukebox
                 //force a model reload
                 App.ViewModel = null;
             }
-           
+                
             //load the model
             if (!App.ViewModel.IsDataLoaded)
             {
+                ProgressIndicator prog = new ProgressIndicator();
+                prog.IsVisible = true;
+                prog.IsIndeterminate = true;
+                prog.Text = "Downloading Data from the Cloud...";
+                SystemTray.SetProgressIndicator(this, prog); 
+                             
                 App.ViewModel.LoadVenueData();
+                                        
             }
-         }
+
+       }
+
 
         // Handle selection changed on LongListSelector
         private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
