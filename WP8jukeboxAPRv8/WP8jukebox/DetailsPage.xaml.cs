@@ -210,6 +210,12 @@ namespace WP8jukebox
         //Delete a Track
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            //progress bar acknowlagement for deletion
+            ProgressIndicator prog = new ProgressIndicator();
+            prog.IsVisible = true;
+            prog.IsIndeterminate = true;
+            prog.Text = "Track is being Deleted...";
+            SystemTray.SetProgressIndicator(this, prog); 
             Text3.Visibility = Visibility.Collapsed;
             Text4.Visibility = Visibility.Visible;
 
