@@ -46,6 +46,7 @@ namespace WP8jukebox
                }
              }
 
+            //remove spaces from getvenue
             AVenue.TheVenue = getVenue.Replace(" ", string.Empty);
                          
             //force a reload of model with correct votes behind
