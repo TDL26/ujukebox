@@ -32,26 +32,20 @@ namespace WP8jukebox
             InitializeComponent();
         }
 
-        //testing
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        // When page is navigated to set data context to selected item in list
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnBackKeyPress(e);
-            //progress bar acknowlagement for vote is hidden
+            //if back key press hide progress bar
             ProgressIndicator prog = new ProgressIndicator();
             prog.IsVisible = false;
             prog.IsIndeterminate = false;
             prog.Text = "";
-            SystemTray.SetProgressIndicator(this, prog);
-        }
-
-       // When page is navigated to set data context to selected item in list
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
+            SystemTray.SetProgressIndicator(this, prog); 
+            
             //hides vote acknowledgement popup 
             Text1.Visibility = Visibility.Collapsed;
             Text3.Visibility = Visibility.Collapsed;
-            Text4.Visibility = Visibility.Collapsed;
-         
+            Text4.Visibility = Visibility.Collapsed;      
             string selectedIndex = "";
             getVenue = NavigationContext.QueryString["getVenue"];
             venueBox = getVenue;
