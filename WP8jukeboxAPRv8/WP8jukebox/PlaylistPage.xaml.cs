@@ -9,6 +9,7 @@ namespace WP8jukebox
 {
     public partial class PlaylistPage : PhoneApplicationPage
     {
+        //variable holding
         string getVenue = "";
         string fromAdmin = "";
         string fromEdit = "";

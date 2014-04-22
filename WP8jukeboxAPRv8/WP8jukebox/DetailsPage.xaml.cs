@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 using WP8jukebox.ViewModels;
 
 namespace WP8jukebox
@@ -31,7 +32,19 @@ namespace WP8jukebox
             InitializeComponent();
         }
 
-        // When page is navigated to set data context to selected item in list
+        //testing
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnBackKeyPress(e);
+            //progress bar acknowlagement for vote is hidden
+            ProgressIndicator prog = new ProgressIndicator();
+            prog.IsVisible = false;
+            prog.IsIndeterminate = false;
+            prog.Text = "";
+            SystemTray.SetProgressIndicator(this, prog);
+        }
+
+       // When page is navigated to set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //hides vote acknowledgement popup 
@@ -88,9 +101,18 @@ namespace WP8jukebox
                 }
             }
         }
+
         //make the vote
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            
+            //progress bar acknowlagement for vote
+            ProgressIndicator prog = new ProgressIndicator();
+            prog.IsVisible = true;
+            prog.IsIndeterminate = true;
+            prog.Text = "Vote is being Sent to the Cloud...";
+            SystemTray.SetProgressIndicator(this, prog); 
+            
             //msg to acknowledge vote
             Text2.Visibility = Visibility.Collapsed;
 
@@ -170,7 +192,7 @@ namespace WP8jukebox
             //if PUT fails
             if (!response.IsSuccessStatusCode)
             {
-                //TODO
+                 //todo
             }
 
             //navigated to from chart page , then navigate back to that page
