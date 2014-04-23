@@ -30,6 +30,15 @@ namespace WP8jukebox
             venueBox = getVenue;
             textBox1.Text = venueBox;
 
+            //new
+            //remove spaces from getvenue
+            AVenue.TheVenue = getVenue.Replace(" ", string.Empty);
+
+            //force a reload of model with correct votes behind
+            
+            //new
+           // App.ViewModel = null;
+
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
             NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
 
