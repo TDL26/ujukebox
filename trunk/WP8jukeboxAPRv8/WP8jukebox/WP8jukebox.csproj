@@ -129,6 +129,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="sendmail.xaml.cs">
+      <DependentUpon>sendmail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="sendmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SplashPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,7 +216,7 @@
     <None Include="Scripts\jquery-2.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="APPLICATION_ICON_99X99.PNG" />
+    <Content Include="images\APPLICATION_ICON_99X99.PNG" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -233,14 +240,9 @@
     <Content Include="images\MEDICON.png" />
     <Content Include="images\SMALL.PNG" />
     <Content Include="images\SMALLICON.png" />
-    <Content Include="MEDICON.png" />
-    <Content Include="MEDIUM_ICON_202X202.png" />
     <Content Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
-    <Content Include="SMALL.PNG" />
-    <Content Include="SMALLICON.png" />
-    <Content Include="SMALL_ICON_110X110.png" />
     <Content Include="SplashScreenImage .jpg" />
   </ItemGroup>
   <ItemGroup>
