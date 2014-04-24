@@ -247,10 +247,19 @@
     <Content Include="images\MEDICON.png" />
     <Content Include="images\SMALL.PNG" />
     <Content Include="images\SMALLICON.png" />
+    <Content Include="README_FIRST.txt" />
     <Content Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="SplashScreenImage .jpg" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Email.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Play.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Save.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.gsw.resx" />
@@ -260,6 +269,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Toolkit.Testing">
+      <HintPath>..\packages\WPToolkitTestFx.4.2012.11.14\lib\wp8\Microsoft.Phone.Toolkit.Testing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Phone">
+      <HintPath>..\packages\WPToolkitTestFx.4.2012.11.14\lib\wp8\Microsoft.VisualStudio.QualityTools.UnitTesting.Phone.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
