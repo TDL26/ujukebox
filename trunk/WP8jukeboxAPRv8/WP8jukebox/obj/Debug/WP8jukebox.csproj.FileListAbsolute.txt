@@ -148,5 +148,4 @@ D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\Bin\Debug\gsw\WP
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\obj\Debug\WP8jukebox.Resources.AppResources.gsw.resources
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\obj\Debug\gsw\WP8jukebox.resources.dll
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\obj\Debug\sendmail.g.cs
-D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\obj\Debug\WP8jukebox.csprojResolveAssemblyReference.cache
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukeboxAPRv8\WP8jukebox\obj\Debug\AboutPage.g.cs
