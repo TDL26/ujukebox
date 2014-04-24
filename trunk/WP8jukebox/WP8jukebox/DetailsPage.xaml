@@ -24,7 +24,9 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="UJUKEBOX" Style="{StaticResource PhoneTextNormalStyle}" Height="52" Foreground="#FFEE1515"/>
-            <TextBlock Text="Details" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Height="125"/>
+            <TextBlock Text="{Binding}" x:Name="textBox1" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FFF5F9A7" FontSize="36"/>
+
+            <TextBlock Text="Track Details" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Height="125"/>
         </StackPanel>
 
         <!--ContentPanel contains details text. Place additional content here-->
@@ -44,8 +46,8 @@
                 <TextBlock Text="{Binding LineFour}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#99E2E3EC" FontSize="36"/>
             </StackPanel>
 
-            <Button Content="Click Here To Vote" HorizontalAlignment="Left" Margin="115,453,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-            <TextBox x:Name="Text1" HorizontalAlignment="Left" Height="72" Margin="63,363,0,0" TextWrapping="Wrap" Text="Thank You for Your Vote!" VerticalAlignment="Top" Width="338" TextChanged="TextBox_TextChanged" FontWeight="Bold" RenderTransformOrigin="0.609,0.486" Background="#BFD199A3"/>
+            <Button Content="Click Here To Vote" HorizontalAlignment="Left" Margin="113,425,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+            <TextBox x:Name="Text1" HorizontalAlignment="Left" Height="72" Margin="65,362,0,0" TextWrapping="Wrap" Text="Thank You for Your Vote!" VerticalAlignment="Top" Width="338" TextChanged="TextBox_TextChanged" FontWeight="Bold" RenderTransformOrigin="0.609,0.486" Background="#BFD199A3"/>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

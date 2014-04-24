@@ -16,23 +16,16 @@ namespace WP8jukebox
 {
     public partial class GenrePage : PhoneApplicationPage
     {
+        //store the venue name
         string getVenue = "";
-        string getGenre = "";
-        string fromChart = "";
-        //string getName = "";
-
-        public static string genreBox { get; set; }
+       
+        // setter for text box
         public static string venueBox { get; set; }
 
-       
-          // Constructor
+        // Constructor
         public GenrePage()
         {
-            
             InitializeComponent();
-
-            // Set the data context to a new Recording.
-            
 
             // Set the data context of the LongListSelector control to the sample data
             DataContext = App.ViewModel;
@@ -44,45 +37,32 @@ namespace WP8jukebox
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
-            if (NavigationContext.QueryString.TryGetValue("fromChart", out fromChart))
-            {
-                getVenue = NavigationContext.QueryString["getVenue"];
-                getGenre = NavigationContext.QueryString["getGenre"];
-                venueBox = getVenue;
-
-
-                NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
-                                
-            
+            //check for back button press to by pass reload of model
+            base.OnNavigatedTo(e);
+            if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
+            { 
             }
             else
             {
-                string selectedIndex = "";
-                //navigated from playlist page
-                if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
-                {
-                    
-                    int index = int.Parse(selectedIndex);
-                    //DataContext = App.ViewModel.Items[index];
-                    getVenue = App.ViewModel.Items[index].LineOne;
-                   //genreBox = getVenue;
-                    venueBox = getVenue;
-                }
-
-           
-            
-                //App.ViewModel = null;
-                if (!App.ViewModel.IsDataLoaded)
-                {
-                    //DataContext = App.ViewModel.Items2;
-                    App.ViewModel.LoadGenreData();
-                }
-
-            }
-            textBox1.Text = venueBox;
-            
-           
+               //get the id from the passed selected item in the list
+               string selectedIndex = "";
+               //navigated from playlist page
+                  if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+                  {
+                      //get the passed in venue choice from index
+                      int index = int.Parse(selectedIndex);
+                      getVenue = App.ViewModel.Items[index].LineOne;
+                      venueBox = getVenue;
+                      textBox1.Text = venueBox;
+                  }
+             }
+                  
+            //force a reload of model with correct votes behind
+            App.ViewModel = null;
+            if (!App.ViewModel.IsDataLoaded)
+            {
+                //App.ViewModel.LoadGenreData();
+            }          
         }
 
         private void setDataContext()
@@ -90,37 +70,17 @@ namespace WP8jukebox
             ContentPanel.DataContext = getVenue;
         }
 
-
-
-        // Handle selection changed on LongListSelector
-        private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // If selected item is null (no selection) do nothing
-            if (MainLongListSelector.SelectedItem == null)
-                return;
-
-           
-            // Navigate to the new page
-            NavigationService.Navigate(new Uri("/PlaylistPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue, UriKind.Relative));
+            // button click navigates to playlist page and forwards getVenue
+            NavigationService.Navigate(new Uri("/PlaylistPage.xaml?getVenue=" + getVenue, UriKind.Relative));
        
-            // Reset selected item to null (no selection)
-            MainLongListSelector.SelectedItem = null;
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
-
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
-    }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+           // button click navigates to chart page and forwards getVenue
+            NavigationService.Navigate(new Uri("/ChartPage.xaml?getVenue=" + getVenue, UriKind.Relative));
+        }
+     }
 }

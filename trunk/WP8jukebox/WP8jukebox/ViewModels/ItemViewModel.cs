@@ -13,10 +13,8 @@ namespace WP8jukebox.ViewModels
     public class ItemViewModel : INotifyPropertyChanged
     {
         private string _id;
-        /// <summary>
+       
         /// Sample ViewModel property; this property is used to identify the object.
-        /// </summary>
-        /// <returns></returns>
         public string ID
         {
             get
@@ -34,10 +32,8 @@ namespace WP8jukebox.ViewModels
         }
 
         private string _realid;
-        /// <summary>
+        
         /// Sample ViewModel property; this property is used to identify the object.
-        /// </summary>
-        /// <returns></returns>
         public string RealID
         {
             get
@@ -55,11 +51,9 @@ namespace WP8jukebox.ViewModels
         }
 
         private string _lineOne;
-        /// <summary>
+        
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public string LineOne
+         public string LineOne
         {
             get
             {
@@ -76,10 +70,8 @@ namespace WP8jukebox.ViewModels
         }
 
         private string _lineTwo;
-        /// <summary>
+        
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
         public string LineTwo
         {
             get
@@ -97,10 +89,8 @@ namespace WP8jukebox.ViewModels
         }
 
         private string _lineThree;
-        /// <summary>
+       
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
         public string LineThree
         {
             get
@@ -118,10 +108,8 @@ namespace WP8jukebox.ViewModels
         }
 
         private int _lineFour;
-        /// <summary>
+       
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
         public int LineFour
         {
             get
@@ -139,11 +127,9 @@ namespace WP8jukebox.ViewModels
         }
 
         private string _lineFive;
-        /// <summary>
+    
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public string LineFive
+         public string LineFive
         {
             get
             {

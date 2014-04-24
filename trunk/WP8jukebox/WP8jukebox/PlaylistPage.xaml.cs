@@ -14,67 +14,40 @@ namespace WP8jukebox
     public partial class PlaylistPage : PhoneApplicationPage
     {
         string getVenue = "";
-        string getGenre = "";
-        public static string genreBox { get; set; }
         public static string venueBox { get; set; }
-
+                               
         public PlaylistPage()
         {
             InitializeComponent();
 
             // Set the data context of the LongListSelector control to the sample data
             DataContext = App.ViewModel;
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           
-
+            base.OnNavigatedTo(e);
+            if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
+            {
+                getVenue = NavigationContext.QueryString["getVenue"];
+                venueBox = getVenue;
+                textBox1.Text = venueBox;
+            }
+            
             if (NavigationContext.QueryString.ContainsKey("getVenue"))
             {
-                //string getName = NavigationContext.QueryString["getName"];
-                // etc ...
-                //venueBox = getVenue;
                 getVenue = NavigationContext.QueryString["getVenue"];
                 venueBox = getVenue;
                 textBox1.Text = venueBox;
             }
-
-            string selectedIndex = "";
-
-            //navigated from playlist page
-            if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
-            {
-                int index = int.Parse(selectedIndex);
-                //DataContext = App.ViewModel.Items[index];
-                getGenre = App.ViewModel.Items2[index].LineOne;
-                getVenue = NavigationContext.QueryString["getVenue"];
-                venueBox = getVenue;
-                textBox1.Text = venueBox;
-
-            }
-
-            
-
+      
             //App.ViewModel = null;
             if (!App.ViewModel.IsDataLoaded)
             {
-                //DataContext = App.ViewModel.Items2;
-                App.ViewModel.LoadGenreData();
+               App.ViewModel.LoadPlaylistData();
             }
-            
-
-
-
         }
-
-
-
-
 
         // Handle selection changed on LongListSelector
         private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -83,37 +56,11 @@ namespace WP8jukebox
             if (MainLongListSelector.SelectedItem == null)
                 return;
 
-            VenueInfo VenueInfo = new VenueInfo();
-            VenueInfo.NameInfo = getVenue;
-
             // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID+"&getVenue="+getVenue+"&getGenre="+getGenre, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID+"&getVenue="+getVenue+ "&fromPlaylist=true", UriKind.Relative));
 
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/GenrePage.xaml" + "?fromChart=true" + "&getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
-
-        }
-
-
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
-
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
     }
 }

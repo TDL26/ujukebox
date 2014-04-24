@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -9,94 +6,70 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using Newtonsoft.Json;
-using WP8jukebox.Resources;
 using WP8jukebox.ViewModels;
 
 namespace WP8jukebox
 {
     public partial class DetailsPage : PhoneApplicationPage
     {
-       public string getVenue = "";
-       public string getGenre = "";
+        public string getVenue = "";
+        public static string venueBox { get; set; }
 
         //new viewmodel property to display page by vote order
         public ItemViewModel tr;
 
-        //get real db index of the model
+        //get real index of model
         string getreal = "";
-
-        //will be set to true if navigated to from chart page
         string fromChart = "";
+        //string fromPlaylist = "";
 
         // Constructor
         public DetailsPage()
         {
             InitializeComponent();
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
-        // When page is navigated to, set data context to selected item in list
+        // When page is navigated to set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string getTrack = "";
-                        
             //hides vote acknowledgement popup 
             Text1.Visibility = Visibility.Collapsed;
-        
-            getGenre = NavigationContext.QueryString["getGenre"];
-            getVenue = NavigationContext.QueryString["getVenue"];
-           //fromChart = NavigationContext.QueryString["fromChart"];
 
             string selectedIndex = "";
 
-            //navigated from playlist page
-            //if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
-            //{
-            //    int index = int.Parse(selectedIndex);
-            //    DataContext = App.ViewModel.Items[index];
-            //    getreal = App.ViewModel.Items3[index].RealID;
-            //}
+            getVenue = NavigationContext.QueryString["getVenue"];
+            venueBox = getVenue;
+            textBox1.Text = venueBox;
 
             if (NavigationContext.QueryString.TryGetValue("fromChart", out fromChart))
             {
-                //check to see if navigated from chart page
-                if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
-                {
-                    int index = int.Parse(selectedIndex);
-                    DataContext = App.ViewModel.Items4[index];
-                    getTrack = App.ViewModel.Items4[index].LineOne;
-                    getreal = App.ViewModel.Items4[index].RealID;
-                }
             }
-            else
+
+            //chect if navigated to from chart, load Items4
+            if (fromChart == "true")
             {
-                ////navigated from playlist page
-                //if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
-                //{
-                //    int index = int.Parse(selectedIndex);
-                //    DataContext = App.ViewModel.Items[index];
-                //    getreal = App.ViewModel.Items[index].RealID;
-                //}
                 if (DataContext == null)
                 {
-                    //string selectedIndex = "";
                     if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
                     {
                         int index = int.Parse(selectedIndex);
-                        DataContext = App.ViewModel.Items3[index];
-                        getTrack = App.ViewModel.Items3[index].LineOne;
-                        getreal = App.ViewModel.Items3[index].RealID;
-
+                        DataContext = App.ViewModel.Items4[index];
+                        getreal = App.ViewModel.Items4[index].RealID;
                     }
                 }
             }
 
-                       
-           
-            
+            //not from chart load Items3
+            if (DataContext == null)
+            {
+                if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+                {
+                    int index = int.Parse(selectedIndex);
+                    DataContext = App.ViewModel.Items3[index];
+                    getreal = App.ViewModel.Items3[index].RealID;
+                }
+            }
+
         }
         //make the vote
         private async void Button_Click_1(object sender, RoutedEventArgs e)
@@ -112,8 +85,7 @@ namespace WP8jukebox
             string artist = tr.LineTwo;
             string genre = tr.LineThree;
             int vote = Convert.ToInt32(tr.LineFour);
-            
-          
+
             //increment the vote number
             vote++;
             //increment the displayed vote number
@@ -127,55 +99,39 @@ namespace WP8jukebox
             client.DefaultRequestHeaders.
             Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/ujukeapi");   //fdoes terry need this!!!!"!
+            HttpResponseMessage response = await client.GetAsync("api/ujukeapi");
 
             //getreal sets the db id row to the correct value
-           Track newListing = new Track { ID = getreal, Title = title, Artist = artist, Genre = genre, Vote = vote };
-            
-            //this works
-           //// Track newListing = new Track { ID = "24", Title = "new.....put full terry to old row", Artist = "postTERRY", Genre = "TERRY", Vote = 999 };
+            Track newListing = new Track { ID = getreal, Title = title, Artist = artist, Genre = genre, Vote = vote };
 
-
-            //StockListing newListing = new StockListing() { TickerSymbol = "FB", Price = 34.1 };
-            //HttpResponseMessage response = client.PostAsJsonAsync("api/stock", newListing).Result;
-            //id = 24;
             // update by Put to /api/ujukeapi a listing serialised in request body
             //the +id is added to the url to address the correct row in the db
             response = await client.PutAsJsonAsync("api/ujukeapi/" + id, newListing);
-           // response = client.PostAsJsonAsync("api/ujukeapi/", newListing).Result;   //.Result;
-          //  response = client.PostAsXmlAsync("api/ujukeapi/", newListing).Result;    //.Result;
-
 
             //if PUT fails
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    //TODO
-            //    //Uri newStockUri = response.Headers.Location;
-            //    //Console.WriteLine(response.StatusCode + " " + response.ReasonPhrase);
-            //}
+            if (!response.IsSuccessStatusCode)
+            {
+                //TODO
+            }
 
             //delay the page navigation so user can see vote acknowledgement                      
             Thread.Sleep(1000);
 
-            //force a reload of the model so all pages have correct data
-            App.ViewModel = null;
-
             //navigated to from chart page , then navigate back to that page
             if (fromChart == "true")
             {
-
-                NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&fromChart=true" + "&fromDetails=true" + "&fromPlaylist=true", UriKind.Relative));
             }
             else
             {
                 //else back to playlist page            
-                NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true", UriKind.Relative));
+                //NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre + "&fromChart=true"+ "&fromDetails=true", UriKind.Relative));
             }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
     }
 }

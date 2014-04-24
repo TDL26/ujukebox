@@ -27,7 +27,7 @@ namespace jukebox.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Venues.ToList());
+            return View(db.Venues.OrderBy(c => c.VenueName).ToList());
         }
 
         //
