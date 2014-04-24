@@ -114,8 +114,7 @@ namespace WP8jukebox
                 //TODO
             }
 
-            //delay the page navigation so user can see vote acknowledgement                      
-            Thread.Sleep(1000);
+           
 
             //navigated to from chart page , then navigate back to that page
             if (fromChart == "true")
@@ -126,6 +125,10 @@ namespace WP8jukebox
             {
                 //else back to playlist page            
                 NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true", UriKind.Relative));
+
+                //delay the page navigation so user can see vote acknowledgement                      
+                Thread.Sleep(1000);
+
                 //NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&getGenre=" + getGenre + "&fromChart=true"+ "&fromDetails=true", UriKind.Relative));
             }
         }

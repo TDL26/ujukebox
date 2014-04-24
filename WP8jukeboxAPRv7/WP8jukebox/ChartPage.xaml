@@ -30,23 +30,29 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <phone:LongListSelector x:Name="MainLongListSelector" Margin="0,10,0,-10" ItemsSource="{Binding Items4}" SelectionChanged="MainLongListSelector_SelectionChanged">
+            <phone:LongListSelector x:Name="MainLongListSelector" Margin="0,-22,0,-22" ItemsSource="{Binding Items4}" SelectionChanged="MainLongListSelector_SelectionChanged">
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="0,0,0,5">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Grid.Column="0" Text="{Binding LineFive}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis"  Style="{StaticResource PhoneTextSubtleStyle}"  FontSize="30"/>
-                                <TextBlock Text="{Binding LineOne}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="30"/>
 
-                            </StackPanel>
+                        <Grid ShowGridLines="False" Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48" />
+                                <RowDefinition />
+                                <RowDefinition Height="5" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="300" />
+                                <ColumnDefinition Width="70" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding LineFive}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Style="{StaticResource PhoneTextSubtleStyle}" FontSize="36" Grid.Column="0" Grid.Row="0" />
+                            <TextBlock Text="{Binding LineOne}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0AF5F5" FontSize="36" Grid.Column="1" Grid.Row="0" />
+                            <TextBlock Text="{Binding LineTwo}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis"  Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#996FFF59" FontSize="24" Grid.Column="1" Grid.Row="1" />
+                           <TextBlock Text="{Binding LineFour}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis"  Style="{StaticResource PhoneTextSubtleStyle}" FontSize="24" Grid.Column="2" Grid.Row="1" />
+                        </Grid>
 
-                            <StackPanel Margin="37,0,0,0" Orientation="Horizontal">
 
-                                <TextBlock Grid.Column="1" Text="{Binding LineTwo}" TextWrapping="NoWrap" TextTrimming ="WordEllipsis"  Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#996FFF59" FontSize="26"/>
-                                <TextBlock Grid.Column="2" Text="{Binding LineFour}"  TextWrapping="NoWrap" TextTrimming ="WordEllipsis"  Style="{StaticResource PhoneTextSubtleStyle}"  FontSize="26"/>
 
-                            </StackPanel>
-                        </StackPanel>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>

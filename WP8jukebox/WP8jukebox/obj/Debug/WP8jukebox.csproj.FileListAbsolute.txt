@@ -54,7 +54,6 @@ D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\Bin\Debug\System.Net.
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\Bin\Debug\System.Net.Http.Extensions.xml
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\Bin\Debug\System.Net.Http.Formatting.xml
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\Bin\Debug\System.Net.Http.Primitives.xml
-D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\WP8jukebox.csprojResolveAssemblyReference.cache
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\App.g.cs
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\DetailsPage.g.cs
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\GenrePage.g.cs
@@ -67,3 +66,4 @@ D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\WP8jukebox.
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\WP8jukebox.pdb
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\XapCacheFile.xml
 D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\ChartPage.g.cs
+D:\Google Drive\_GoogleCode\ujukebox\WP8jukebox\WP8jukebox\obj\Debug\Choice.g.cs

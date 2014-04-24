@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{790207E9-885D-437A-BCDF-D318E67F5497}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ujukebox</RootNamespace>
@@ -211,47 +211,31 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="aTrack.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ujukeapiController.cs" />
-    <Compile Include="Controllers\ujukeboxController.cs" />
-    <Compile Include="Controllers\voteApiController.cs" />
+    <Compile Include="Controllers\jukeapiController1.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Track.cs">
-      <DependentUpon>ujukeboxl1.tt</DependentUpon>
+      <DependentUpon>UJukeboxModel1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ujukeboxl1.Context.cs">
+    <Compile Include="UJukeboxModel1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ujukeboxl1.Context.tt</DependentUpon>
+      <DependentUpon>UJukeboxModel1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ujukeboxl1.cs">
+    <Compile Include="UJukeboxModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ujukeboxl1.tt</DependentUpon>
+      <DependentUpon>UJukeboxModel1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ujukeboxl1.Designer.cs">
+    <Compile Include="UJukeboxModel1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ujukeboxl1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="UserProfile.cs">
-      <DependentUpon>ujukeboxl1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="webpages_Membership.cs">
-      <DependentUpon>ujukeboxl1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="webpages_OAuthMembership.cs">
-      <DependentUpon>ujukeboxl1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="webpages_Roles.cs">
-      <DependentUpon>ujukeboxl1.tt</DependentUpon>
+      <DependentUpon>UJukeboxModel1.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -392,26 +376,27 @@
     <Content Include="Views\ujukebox\Details.cshtml" />
     <Content Include="Views\ujukebox\Edit.cshtml" />
     <Content Include="Views\ujukebox\Index.cshtml" />
-    <EntityDeploy Include="ujukeboxl1.edmx">
+    <EntityDeploy Include="UJukeboxModel1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ujukeboxl1.Designer.cs</LastGenOutput>
+      <LastGenOutput>UJukeboxModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ujukeboxl1.Context.tt">
+    <Content Include="UJukeboxModel1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ujukeboxl1.edmx</DependentUpon>
-      <LastGenOutput>ujukeboxl1.Context.cs</LastGenOutput>
+      <DependentUpon>UJukeboxModel1.edmx</DependentUpon>
+      <LastGenOutput>UJukeboxModel1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ujukeboxl1.edmx.diagram">
-      <DependentUpon>ujukeboxl1.edmx</DependentUpon>
+    <Content Include="UJukeboxModel1.edmx.diagram">
+      <DependentUpon>UJukeboxModel1.edmx</DependentUpon>
     </Content>
-    <Content Include="ujukeboxl1.tt">
+    <Content Include="UJukeboxModel1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ujukeboxl1.edmx</DependentUpon>
-      <LastGenOutput>ujukeboxl1.cs</LastGenOutput>
+      <DependentUpon>UJukeboxModel1.edmx</DependentUpon>
+      <LastGenOutput>UJukeboxModel1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
