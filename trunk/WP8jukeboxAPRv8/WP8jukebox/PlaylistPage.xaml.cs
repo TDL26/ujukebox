@@ -18,7 +18,7 @@ namespace WP8jukebox
         public PlaylistPage()
         {
             InitializeComponent();
-
+            App.ViewModel = null;
             // Set the data context of the LongListSelector control to the sample data
             DataContext = App.ViewModel;
         }
@@ -26,6 +26,11 @@ namespace WP8jukebox
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.ViewModel = null;
+            // Set the data context of the LongListSelector control to the sample data
+            DataContext = App.ViewModel;
+            
+            
             getVenue = NavigationContext.QueryString["getVenue"];
             venueBox = getVenue;
             textBox1.Text = venueBox;
@@ -42,7 +47,8 @@ namespace WP8jukebox
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
             NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
 
-            //App.ViewModel = null;
+            
+
             if (!App.ViewModel.IsDataLoaded)
             {
                 ProgressIndicator prog = new ProgressIndicator();
