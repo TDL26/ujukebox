@@ -59,5 +59,10 @@ namespace WP8jukebox
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
         }
+
+        private void About_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
+        }
     }
 }
