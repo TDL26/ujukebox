@@ -11,6 +11,16 @@ using WP8jukebox.ViewModels;
 
 namespace WP8jukebox
 {
+    public class DeleteDetect
+    {
+        private static string fromDelete = "";
+        public static string FromDelete
+        {
+            get { return fromDelete; }
+            set { fromDelete = value; }
+        }
+    }
+
     public partial class DetailsPage : PhoneApplicationPage
     {
         public string getVenue = "";
@@ -25,6 +35,8 @@ namespace WP8jukebox
         string fromChart = "";
         string fromAdmin = "";
         string fromEdit = "";
+        string fromDelete = "";
+
         
         // Constructor
         public DetailsPage()
@@ -54,6 +66,7 @@ namespace WP8jukebox
             NavigationContext.QueryString.TryGetValue("fromChart", out fromChart);
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
             NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
+            NavigationContext.QueryString.TryGetValue("fromDelete", out fromDelete);
 
             if (fromAdmin == "fromAdmin")
             {
@@ -68,6 +81,14 @@ namespace WP8jukebox
                 Text1.Visibility = Visibility.Collapsed;
                 Text2.Visibility = Visibility.Collapsed;
                 Text4.Visibility = Visibility.Collapsed;
+            }
+
+            if (DeleteDetect.FromDelete == "true")
+            {
+                //Text1.Visibility = Visibility.Collapsed;
+                //Text2.Visibility = Visibility.Collapsed;
+                //Text3.Visibility = Visibility.Collapsed;
+                //Text4.Visibility = Visibility.Collapsed;
             }  
 
             //check if navigated to from chart, load Items4
@@ -238,7 +259,11 @@ namespace WP8jukebox
 
             //delete works
             response = await client.DeleteAsync("api/jukeapi/" + id);
+
+           // DeleteDetect.FromDelete = "true";
             
+            //NavigationService.CurrentSource.IsLoopback
+
             //if PUT fails
             if (!response.IsSuccessStatusCode)
             {
@@ -246,8 +271,9 @@ namespace WP8jukebox
             }
                           
             //back to playlist page            
-            NavigationService.Navigate(new Uri("/AdminPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/AdminPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue + "&fromDelete=true", UriKind.Relative));
 
+            
             //delay the page navigation so user can see vote acknowledgement                      
             Thread.Sleep(1000);
         }
