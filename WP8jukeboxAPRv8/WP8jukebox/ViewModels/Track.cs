@@ -22,5 +22,6 @@ namespace WP8jukebox
         public string AlternativeBar { get; set; }
         public string PopClub { get; set; }
         public string RnbClub { get; set; }
+        public string Admin { get; set; }
     }
 }
