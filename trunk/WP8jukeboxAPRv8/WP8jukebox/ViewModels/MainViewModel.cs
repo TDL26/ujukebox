@@ -396,7 +396,8 @@ namespace WP8jukebox.ViewModels
                 int newID4 = 0;
                 int position = 1;
 
-                foreach (var listing in li)
+                //limit charts to 99 items
+                foreach (var listing in li.Take(99))
                 {
                     getId = listing.TrackID.ToString();
                     var ID = newID4;
