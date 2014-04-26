@@ -32,7 +32,7 @@
             <phone:LongListSelector x:Name="MainLongListSelector" Margin="0,0,0,0" ItemsSource="{Binding Items4}" SelectionChanged="MainLongListSelector_SelectionChanged" Background="Black"  >
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                        <Grid ShowGridLines="FALSE" Margin="0,0,0,0" VerticalAlignment="Bottom">
+                        <Grid ShowGridLines="True" Margin="0,0,0,0" VerticalAlignment="Bottom">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40" />
                                 <RowDefinition />
