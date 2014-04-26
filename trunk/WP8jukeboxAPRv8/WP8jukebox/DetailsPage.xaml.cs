@@ -248,6 +248,7 @@ namespace WP8jukebox
         //set zote to 0 - ie remove from current playlist
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+                  
             //progress bar acknowlagement delete
             ProgressIndicator prog = new ProgressIndicator();
             prog.IsVisible = true;
@@ -279,133 +280,141 @@ namespace WP8jukebox
             int popclub = Convert.ToInt32(tr.LineEleven);
             int rnbclub = Convert.ToInt32(tr.LineTwelve);
 
-
+            
             venue = getVenue.Replace(" ", string.Empty);
 
-            if (venue == "PopBar")
+            if (venue == "Admin")
             {
-                popbar = 0;
-            }
-            if (venue == "PartyClub")
-            {
-                partyclub = 0;
-            }
-            if (venue == "RockBar")
-            {
-                rockbar = 0;
-            }
-            if (venue == "DanceClub")
-            {
-                danceclub = 0;
-            }
-            if (venue == "AlternativeBar")
-            {
-                alternativebar = 0;
-            }
-            if (venue == "PopClub")
-            {
-                popclub = 0;
-            }
-            if (venue == "RnbClub")
-            {
-                rnbclub = 0;
-            }
+                   //Delete a Track
+               
+                    //progress bar acknowlagement for deletion
+                    ProgressIndicator prog1 = new ProgressIndicator();
+                    prog1.IsVisible = true;
+                    prog1.IsIndeterminate = true;
+                    prog1.Text = "Track is being Deleted...";
+                    SystemTray.SetProgressIndicator(this, prog); 
+                    Text3.Visibility = Visibility.Collapsed;
+                    Text4.Visibility = Visibility.Visible;
 
-            //increment the displayed vote number
-            //tr.LineFour++;
+                    App.ViewModel = null;
 
-            // base URL for API Controller i.e. RESTFul service
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
+                    ItemViewModel tr1 = (ItemViewModel)this.DataContext;
 
-            // add an Accept header for JSON
-            client.DefaultRequestHeaders.
-            Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                   // get the values to be sent to db to facilitate update PUT to db
+                    int id1 = Convert.ToInt32(getreal);
 
-            HttpResponseMessage response = await client.GetAsync("api/jukeapi");
+                    // base URL for API Controller i.e. RESTFul service
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
 
-            //getreal sets the db id row to the correct value
-            Track newListing = new Track { TrackID = getreal, Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString(), AlternativeBar = alternativebar.ToString(), PopClub = popclub.ToString(), RnbClub = rnbclub.ToString() };
+                     //add an Accept header for JSON
+                    client.DefaultRequestHeaders.
+                    Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            // update by Put to /api/ujukeapi a listing serialised in request body
-            //the +id is added to the url to address the correct row in the db
-            response = await client.PutAsJsonAsync("api/jukeapi/" + id, newListing);
+                    HttpResponseMessage response = await client.GetAsync("api/jukeapi");
 
-            //if PUT fails
-            if (!response.IsSuccessStatusCode)
-            {
-                //todo
-            }
+                    //delete works
+                    response = await client.DeleteAsync("api/jukeapi/" + id1);
 
-            //navigated to from chart page , then navigate back to that page
-            if (fromChart == "true")
-            {
-                NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&fromChart=true" + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
+                    DeleteDetect.FromDelete = "true";
 
-                //delay the page navigation so user can see vote acknowledgement                      
-                Thread.Sleep(1000);
+                    //NavigationService.CurrentSource.IsLoopback
+
+                    //if PUT fails
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        //TODO
+                    }
+
+                    //back to playlist page            
+                    NavigationService.Navigate(new Uri("/AdminPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue + "&fromDelete=true", UriKind.Relative));
+
+
+                    //delay the page navigation so user can see vote acknowledgement                      
+                    Thread.Sleep(1000);
+               
+
             }
             else
             {
-                //else back to playlist page            
-                NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
+                if (venue == "PopBar")
+                {
+                    popbar = 0;
+                }
+                if (venue == "PartyClub")
+                {
+                    partyclub = 0;
+                }
+                if (venue == "RockBar")
+                {
+                    rockbar = 0;
+                }
+                if (venue == "DanceClub")
+                {
+                    danceclub = 0;
+                }
+                if (venue == "AlternativeBar")
+                {
+                    alternativebar = 0;
+                }
+                if (venue == "PopClub")
+                {
+                    popclub = 0;
+                }
+                if (venue == "RnbClub")
+                {
+                    rnbclub = 0;
+                }
 
-                //delay the page navigation so user can see vote acknowledgement                      
-                Thread.Sleep(1000);
+                //increment the displayed vote number
+                //tr.LineFour++;
+
+                // base URL for API Controller i.e. RESTFul service
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
+
+                // add an Accept header for JSON
+                client.DefaultRequestHeaders.
+                Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync("api/jukeapi");
+
+                //getreal sets the db id row to the correct value
+                Track newListing = new Track { TrackID = getreal, Title = title, Artist = artist, Genre = genre, PopBar = popbar.ToString(), PartyClub = partyclub.ToString(), RockBar = rockbar.ToString(), DanceClub = danceclub.ToString(), AlternativeBar = alternativebar.ToString(), PopClub = popclub.ToString(), RnbClub = rnbclub.ToString() };
+
+                // update by Put to /api/ujukeapi a listing serialised in request body
+                //the +id is added to the url to address the correct row in the db
+                response = await client.PutAsJsonAsync("api/jukeapi/" + id, newListing);
+
+                //if PUT fails
+                if (!response.IsSuccessStatusCode)
+                {
+                    //todo
+                }
+
+                //navigated to from chart page , then navigate back to that page
+                if (fromChart == "true")
+                {
+                    NavigationService.Navigate(new Uri("/ChartPage.xaml" + "?getVenue=" + getVenue + "&fromChart=true" + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
+
+                    //delay the page navigation so user can see vote acknowledgement                      
+                    Thread.Sleep(1000);
+                }
+                else
+                {
+                    //else back to playlist page            
+                    NavigationService.Navigate(new Uri("/PlaylistPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue, UriKind.Relative));
+
+                    //delay the page navigation so user can see vote acknowledgement                      
+                    Thread.Sleep(1000);
+                }
             }
+
+
+           
         }
 
 
-
-        ////////////Delete a Track
-        //////////private async void Button_Click_2(object sender, RoutedEventArgs e)
-        //////////{
-        //////////    //progress bar acknowlagement for deletion
-        //////////    ProgressIndicator prog = new ProgressIndicator();
-        //////////    prog.IsVisible = true;
-        //////////    prog.IsIndeterminate = true;
-        //////////    prog.Text = "Track is being Deleted...";
-        //////////    SystemTray.SetProgressIndicator(this, prog); 
-        //////////    Text3.Visibility = Visibility.Collapsed;
-        //////////    Text4.Visibility = Visibility.Visible;
-
-        //////////    App.ViewModel = null;
-
-        //////////    ItemViewModel tr = (ItemViewModel)this.DataContext;
-
-        //////////    //get the values to be sent to db to facilitate update PUT to db
-        //////////    int id = Convert.ToInt32(getreal);
-            
-        //////////    // base URL for API Controller i.e. RESTFul service
-        //////////    HttpClient client = new HttpClient();
-        //////////    client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
-
-        //////////    // add an Accept header for JSON
-        //////////    client.DefaultRequestHeaders.
-        //////////    Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //////////    HttpResponseMessage response = await client.GetAsync("api/jukeapi");
-
-        //////////    //delete works
-        //////////    response = await client.DeleteAsync("api/jukeapi/" + id);
-
-        //////////   // DeleteDetect.FromDelete = "true";
-            
-        //////////    //NavigationService.CurrentSource.IsLoopback
-
-        //////////    //if PUT fails
-        //////////    if (!response.IsSuccessStatusCode)
-        //////////    {
-        //////////        //TODO
-        //////////    }
-                          
-        //////////    //back to playlist page            
-        //////////    NavigationService.Navigate(new Uri("/AdminPage.xaml" + "?getVenue=" + getVenue + "&fromDetails=true" + "&fromPlaylist=true" + "&venue" + venue + "&fromDelete=true", UriKind.Relative));
-
-            
-        //////////    //delay the page navigation so user can see vote acknowledgement                      
-        //////////    Thread.Sleep(1000);
-        //////////}
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
