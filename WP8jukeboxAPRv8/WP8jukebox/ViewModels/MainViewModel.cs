@@ -233,6 +233,114 @@ namespace WP8jukebox.ViewModels
             }
         }
 
+        //load playlist tracks not in the venues playlist
+        public async void LoadNonPlaylistData()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                // base URL for API Controller i.e. RESTFul service
+                client.BaseAddress = new Uri("http://jukebox.azurewebsites.net/");
+
+                // add an Accept header for JSON
+                client.DefaultRequestHeaders.
+                Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync("api/playlistapi/");
+
+                var lists3 = await response.Content.ReadAsAsync<IEnumerable<Track>>();
+
+                //// to hold real item id from db
+                string getId = "";
+                int newID3 = 0;
+                int position = 1;
+
+                foreach (var listing in lists3)
+                {
+
+                    //get the original id and save to getid
+                    //getId = listing.ID;
+                    getId = listing.TrackID.ToString();
+                    var ID = newID3;
+                    var lineone = listing.Title.ToString();
+                    var linetwo = listing.Artist.ToString();
+                    var linethree = listing.Genre.ToString();
+                    int linefour = 0;
+                    int linesix = Int32.Parse(listing.PopBar);
+                    int lineseven = Int32.Parse(listing.PartyClub);
+                    int lineeight = Int32.Parse(listing.RockBar);
+                    int linenine = Int32.Parse(listing.DanceClub);
+                    int lineten = Int32.Parse(listing.AlternativeBar);
+                    int lineeleven = Int32.Parse(listing.PopClub);
+                    int linetwelve = Int32.Parse(listing.RnbClub);
+                    // int venuevote = 0;
+
+                    string thevenue = AVenue.TheVenue;
+
+                    if (thevenue == "PopBar")
+                    {
+                        linefour = linesix;
+                    }
+                    if (thevenue == "PartyClub")
+                    {
+                        linefour = lineseven;
+                    }
+                    if (thevenue == "RockBar")
+                    {
+                        linefour = lineeight;
+                    }
+
+                    if (thevenue == "DanceClub")
+                    {
+                        linefour = linenine;
+                    }
+                    if (thevenue == "AlternativeBar")
+                    {
+                        linefour = lineten;
+                    }
+                    if (thevenue == "PopClub")
+                    {
+                        linefour = lineeleven;
+                    }
+                    if (thevenue == "RnbClub")
+                    {
+                        linefour = linetwelve;
+                    }
+
+                    if (linefour < 1)
+                    {
+                        //Real to pass the realid 
+                        this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
+                        position++;
+                        //newid is used to set ID to 0 - the index of the item in the displayed list
+                        newID3++;
+                    }
+                }
+
+                this.IsDataLoaded = true;
+                SystemTray.ProgressIndicator.IsVisible = false;
+            }
+            catch (Exception)
+            {
+                MessageBoxResult result =
+               MessageBox.Show("You seem to be having trouble connecting to the Network!\n\nCheck that you have a network connection.\n\nTry Again?",
+               "Network Error!", MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+
+                    LoadVenueData();
+
+                }
+                else
+                {
+                    MessageBox.Show("Press the Back button to Exit the application.");
+                }
+            }
+        }
+
+
         public async void LoadChartData()
         {
             try

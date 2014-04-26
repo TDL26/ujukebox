@@ -13,6 +13,7 @@ namespace WP8jukebox
         string getVenue = "";
         string fromAdmin = "";
         string fromEdit = "";
+        string fromFull = "";
         public static string venueBox { get; set; }
 
         public PlaylistPage()
@@ -39,25 +40,30 @@ namespace WP8jukebox
             //remove spaces from getvenue
             AVenue.TheVenue = getVenue.Replace(" ", string.Empty);
 
-            //force a reload of model with correct votes behind
-            
-            //new
-           // App.ViewModel = null;
-
             NavigationContext.QueryString.TryGetValue("fromAdmin", out fromAdmin);
             NavigationContext.QueryString.TryGetValue("fromEdit", out fromEdit);
+            NavigationContext.QueryString.TryGetValue("fromFull", out fromFull);
 
             
-
             if (!App.ViewModel.IsDataLoaded)
             {
                 ProgressIndicator prog = new ProgressIndicator();
                 prog.IsVisible = true;
                 prog.IsIndeterminate = true;
                 prog.Text = "Downloading Data from the Cloud...";
-                SystemTray.SetProgressIndicator(this, prog); 
+                SystemTray.SetProgressIndicator(this, prog);
 
-                App.ViewModel.LoadPlaylistData();
+                if (fromFull == "fromFull")
+                {
+                    App.ViewModel.LoadNonPlaylistData();
+                    textBox1.Text = "Full Playlist";
+                  
+                }
+                else
+                {
+                    App.ViewModel.LoadPlaylistData();
+                }
+               
             }
         }
 
@@ -68,16 +74,25 @@ namespace WP8jukebox
             if (MainLongListSelector.SelectedItem == null)
                 return;
 
-            if (fromEdit == "fromEdit")
+            if ((fromEdit == "fromEdit") && (fromFull == null))
             {
                 // Navigate to the new page
                 NavigationService.Navigate(new Uri("/EditTrack.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
             }
-            else
+
+            else if ((fromEdit == "fromEdit") && (fromFull == "fromFull"))
+            {
+
+                // Navigate to the new page
+                NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit + "&fromFull=" + fromFull, UriKind.Relative));
+                }   
+            
+            else 
             {
                 // Navigate to the new page
                 NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
             }
+           
 
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;
