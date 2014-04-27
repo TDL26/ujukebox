@@ -9,6 +9,7 @@
     <AssemblyPart x:Name="System.Net.Http.Extensions" Source="System.Net.Http.Extensions.dll" />
     <AssemblyPart x:Name="System.Net.Http.Formatting" Source="System.Net.Http.Formatting.dll" />
     <AssemblyPart x:Name="System.Net.Http.Primitives" Source="System.Net.Http.Primitives.dll" />
+    <AssemblyPart x:Name="UnitTestUtilities" Source="UnitTestUtilities.dll" />
     <AssemblyPart Source="gsw/WP8jukebox.resources.dll" />
   </Deployment.Parts>
 </Deployment>
