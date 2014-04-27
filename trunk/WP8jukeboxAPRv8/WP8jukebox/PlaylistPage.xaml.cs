@@ -74,13 +74,13 @@ namespace WP8jukebox
             if (MainLongListSelector.SelectedItem == null)
                 return;
 
-            if ((fromEdit == "fromEdit") && (fromFull == null))
+            if (fromEdit == "fromEdit")
             {
                 // Navigate to the new page
                 NavigationService.Navigate(new Uri("/EditTrack.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
             }
 
-            else if ((fromEdit == "fromEdit") && (fromFull == "fromFull"))
+            else if (fromFull == "fromFull")
             {
 
                 // Navigate to the new page
@@ -89,6 +89,7 @@ namespace WP8jukebox
             
             else 
             {
+                //full admin delete
                 // Navigate to the new page
                 NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID + "&getVenue=" + getVenue + "&fromPlaylist=true" + "&fromAdmin=" + fromAdmin + "&fromEdit=" + fromEdit, UriKind.Relative));
             }

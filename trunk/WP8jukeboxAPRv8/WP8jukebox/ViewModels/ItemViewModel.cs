@@ -278,6 +278,25 @@ namespace WP8jukebox.ViewModels
              }
          }
 
+         private int _lineThirteen;
+
+         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+         public int LineThirteen
+         {
+             get
+             {
+                 return _lineThirteen;
+             }
+             set
+             {
+                 if (value != _lineThirteen)
+                 {
+                     _lineThirteen = value;
+                     NotifyPropertyChanged("LineThirteen");
+                 }
+             }
+         }
+
 
          private string _venue;
 
