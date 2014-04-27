@@ -167,6 +167,7 @@ namespace WP8jukebox.ViewModels
                     int lineten = Int32.Parse(listing.AlternativeBar);
                     int lineeleven = Int32.Parse(listing.PopClub);
                     int linetwelve = Int32.Parse(listing.RnbClub);
+                    int linethirteen = Int32.Parse(listing.Admin);
                     // int venuevote = 0;
 
                     string thevenue = AVenue.TheVenue;
@@ -200,11 +201,16 @@ namespace WP8jukebox.ViewModels
                     {
                         linefour = linetwelve;
                     }
+
+                    if (thevenue == "Admin")
+                    {
+                        linefour = linethirteen;
+                    }
                     
                     if (linefour > 0)
                     {
                         //Real to pass the realid 
-                        this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
+                        this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve, LineThirteen = linethirteen });
                         position++;
                         //newid is used to set ID to 0 - the index of the item in the displayed list
                         newID3++;
@@ -274,6 +280,7 @@ namespace WP8jukebox.ViewModels
                     int lineten = Int32.Parse(listing.AlternativeBar);
                     int lineeleven = Int32.Parse(listing.PopClub);
                     int linetwelve = Int32.Parse(listing.RnbClub);
+                    int linethirteen = Int32.Parse(listing.Admin);
                     // int venuevote = 0;
 
                     string thevenue = AVenue.TheVenue;
@@ -307,11 +314,15 @@ namespace WP8jukebox.ViewModels
                     {
                         linefour = linetwelve;
                     }
+                    if (thevenue == "Admin")
+                    {
+                        linefour = linethirteen;
+                    }
 
                     if (linefour < 1)
                     {
                         //Real to pass the realid 
-                        this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
+                        this.Items3.Add(new ItemViewModel() { RealID = getId, ID = newID3.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve, LineThirteen = linethirteen });
                         position++;
                         //newid is used to set ID to 0 - the index of the item in the displayed list
                         newID3++;
@@ -412,6 +423,7 @@ namespace WP8jukebox.ViewModels
                     int lineten = Int32.Parse(listing.AlternativeBar);
                     int lineeleven = Int32.Parse(listing.PopClub);
                     int linetwelve = Int32.Parse(listing.RnbClub);
+                    int linethirteen = Int32.Parse(listing.Admin);
 
                     thevenue = AVenue.TheVenue;
 
@@ -443,11 +455,15 @@ namespace WP8jukebox.ViewModels
                     {
                         linefour = linetwelve;
                     }
+                    if (thevenue == "Admin")
+                    {
+                        linefour = linethirteen;
+                    }
 
                     if (linefour > 0)
                     {
                         //Real to pass the realid 
-                        this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID4.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve });
+                        this.Items4.Add(new ItemViewModel() { RealID = getId, ID = newID4.ToString(), LineOne = lineone, LineTwo = linetwo, LineThree = linethree, LineFour = linefour, LineFive = position.ToString(), LineSix = linesix, LineSeven = lineseven, LineEight = lineeight, LineNine = linenine, LineTen = lineten, LineEleven = lineeleven, LineTwelve = linetwelve, LineThirteen = linethirteen });
                         position++;
 
                         //newid is used to set ID to 0 - the index of the item in the displayed list
