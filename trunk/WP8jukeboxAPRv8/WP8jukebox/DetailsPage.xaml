@@ -48,7 +48,7 @@
                 <TextBlock Text="Genre:" Margin="9,0,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" FontSize="24"/>
                 <TextBlock Text="{Binding LineThree}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#991332F9" FontSize="36"/>
                 <TextBlock Text="Total Votes:" Margin="9,0,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" FontSize="24"/>
-                <TextBlock Text="{Binding LineFour}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#99E2E3EC" FontSize="36"/>
+                <TextBlock Text="{Binding LineFour}" Margin="9,-30,0,0" Style="{StaticResource PhoneTextLargeStyle}" Height="59" Foreground="#FFF5F9A7" FontSize="36"/>
             </StackPanel>
 
             <Button x:Name="Text3" Content="Delete this Track" HorizontalAlignment="Center" Margin="0,465,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="456" Height="94" Foreground="#FFF5F9A7" BorderBrush="#996FFF59" FontSize="26" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
